@@ -1,0 +1,168 @@
+/* ─────────────────────────────────────────────────────────────
+   LO-FI WIREFRAME · DESIGN TOKENS
+   The single source of truth for color, type, space, radius,
+   border, shadow, motion. Imported by styles.css.
+   Group → category → role → step
+   ───────────────────────────────────────────────────────────── */
+
+:root{
+  /* ── COLOR · primitives ──────────────────────── */
+  --color-white:        #ffffff;
+  --color-black:        #000000;
+  --color-ink-900:      #111111;
+  --color-ink-700:      #767676;
+  --color-ink-500:      #aaaaaa;
+  --color-ink-400:      #bfbfbf;
+  --color-ink-300:      #d9d9d9;
+  --color-ink-200:      #eeeeee;
+  --color-ink-100:      #fafafa;
+  --color-blue-600:     #074ee8;
+  --color-blue-500:     #0066ff;
+  --color-blue-50:      #ebf3ff;
+  --color-blue-25:      #edf4ff;
+  --color-yellow-200:   rgba(255,235,59,0.55);
+  --color-danger-500:   #d2204c;
+
+  /* ── COLOR · semantic roles ──────────────────── */
+  --color-fg:                   var(--color-ink-900);
+  --color-fg-muted:             var(--color-ink-700);
+  --color-fg-subtle:            var(--color-ink-500);
+  --color-fg-on-primary:        var(--color-white);
+  --color-bg:                   var(--color-white);
+  --color-bg-muted:             var(--color-ink-100);
+  --color-bg-page:              var(--color-ink-200);
+  --color-bg-tint:              var(--color-blue-50);
+  --color-bg-tint-2:            var(--color-blue-25);
+  --color-bg-inverse:           var(--color-ink-900);
+  --color-border:               var(--color-ink-500);
+  --color-border-strong:        var(--color-ink-400);
+  --color-border-subtle:        var(--color-ink-300);
+  --color-primary:              var(--color-blue-500);
+  --color-primary-hover:        var(--color-blue-600);
+  --color-primary-fg:           var(--color-white);
+  --color-primary-tint:         var(--color-blue-50);
+  --color-danger:               var(--color-danger-500);
+  --color-highlight:            var(--color-yellow-200);
+
+  /* legacy aliases (kept so existing class names still resolve) */
+  --ink: var(--color-fg);
+  --ink-2: var(--color-fg-muted);
+  --ink-3: var(--color-fg-subtle);
+  --line: var(--color-border);
+  --line-2: var(--color-border-strong);
+  --line-soft: var(--color-border-subtle);
+  --paper: var(--color-bg);
+  --paper-2: var(--color-bg-muted);
+  --paper-3: var(--color-bg-page);
+  --paper-tint: var(--color-bg-tint);
+  --paper-tint-2: var(--color-bg-tint-2);
+  --primary: var(--color-primary);
+  --primary-2: var(--color-primary-hover);
+  --highlight: var(--color-highlight);
+
+  /* ── TYPE · families ─────────────────────────── */
+  --font-hand:      'Kalam', 'Caveat', 'Comic Neue', cursive;
+  --font-label:     'Inter', system-ui, sans-serif;
+  --font-mono:      'JetBrains Mono', ui-monospace, monospace;
+  --font-redacted:  'Redacted Script', cursive;
+
+  /* legacy aliases */
+  --hand: var(--font-hand);
+  --label: var(--font-label);
+  --mono: var(--font-mono);
+
+  /* ── TYPE · scale (px) ───────────────────────── */
+  --text-2xs:   10px;
+  --text-xs:    12px;
+  --text-sm:    13px;
+  --text-base:  14px;
+  --text-md:    16px;
+  --text-lg:    18px;
+  --text-xl:    24px;
+  --text-2xl:   32px;
+  --text-3xl:   48px;
+  --text-4xl:   56px;
+  --text-5xl:   96px;
+
+  /* ── TYPE · weight ───────────────────────────── */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-black:    800;
+
+  /* ── TYPE · line-height ──────────────────────── */
+  --leading-tight:   1.0;
+  --leading-snug:    1.15;
+  --leading-normal:  1.4;
+  --leading-relaxed: 1.55;
+
+  /* ── TYPE · tracking ─────────────────────────── */
+  --tracking-tight:  -0.5px;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+  --tracking-wider:  0.1em;
+  --tracking-widest: 0.16em;
+
+  /* ── SPACING · 4-pt scale ────────────────────── */
+  --space-0:   0;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-14:  56px;
+  --space-16:  64px;
+  --space-18:  72px;
+  --space-20:  80px;
+
+  /* ── RADIUS ──────────────────────────────────── */
+  --radius-none:  0;
+  --radius-xs:    2px;
+  --radius-sm:    4px;
+  --radius-md:    6px;
+  --radius-lg:    8px;
+  --radius-xl:    12px;
+  --radius-pill:  999px;
+  --radius-full:  9999px;
+
+  /* ── BORDER · stroke weights ─────────────────── */
+  --border-1:   1px;
+  --border-1-5: 1.5px;
+  --border-2:   2px;
+  --border-3:   3px;
+
+  /* ── SHADOW ──────────────────────────────────── */
+  --shadow-1: 0 1px 0 rgba(0,0,0,.06);
+  --shadow-2: 0 2px 4px rgba(0,0,0,.10);
+  --shadow-3: 0 8px 24px rgba(0,0,0,.10), 0 4px 8px rgba(0,0,0,.18);
+  --shadow-page: 0 1px 0 rgba(0,0,0,.04), 0 24px 80px rgba(0,0,0,.08);
+  --ring-focus: 0 0 0 3px rgba(0,102,255,.15);
+
+  /* ── MOTION ──────────────────────────────────── */
+  --duration-instant: 80ms;
+  --duration-fast:    150ms;
+  --duration-base:    240ms;
+  --easing-standard:  cubic-bezier(.2,.0,.0,1);
+  --easing-emphasized:cubic-bezier(.2,.0,.0,1.2);
+
+  /* ── LAYOUT ──────────────────────────────────── */
+  --layout-page-max:    1280px;
+  --layout-section-pad: var(--space-18);
+  --layout-section-pady-top: var(--space-14);
+  --layout-section-pady-bottom: var(--space-16);
+
+  /* ── COMPONENT TOKENS ────────────────────────── */
+  --control-height-sm: 32px;
+  --control-height-md: 40px;
+  --control-height-lg: 48px;
+  --control-radius:    var(--radius-sm);
+  --control-border:    var(--border-2);
+  --control-pad-x-sm:  12px;
+  --control-pad-x-md:  16px;
+  --control-pad-x-lg:  18px;
+}

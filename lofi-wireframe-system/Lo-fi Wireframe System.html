@@ -1,0 +1,1009 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Lo-fi Wireframe Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat:wght@400;500;600;700&family=Gloria+Hallelujah&family=Patrick+Hand&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Redacted+Script:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ─────────── COVER ─────────── -->
+  <header class="cover">
+    <div class="cover-eyebrow">Wireframe Library · v1.0 · 2026</div>
+    <h1 class="cover-title">Lo-fi <em>Wireframe</em><br/>Design System</h1>
+    <p class="cover-sub">A pencil-on-paper toolkit for sketching ideas fast — buttons, forms, layouts, devices. Designed to be ugly on purpose.</p>
+
+    <div class="cover-meta">
+      <div class="stamp">Draft<span>not for prod</span></div>
+    </div>
+    <div class="cover-decor">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <nav class="toc">
+      <a href="#foundations"><span class="num">01</span> Foundations</a>
+      <a href="#type"><span class="num">02</span> Type</a>
+      <a href="#color"><span class="num">03</span> Color &amp; effects</a>
+      <a href="#spacing"><span class="num">04</span> Spacing &amp; grid</a>
+      <a href="#buttons"><span class="num">05</span> Buttons</a>
+      <a href="#forms"><span class="num">06</span> Forms</a>
+      <a href="#tabs"><span class="num">07</span> Tabs &amp; pills</a>
+      <a href="#text"><span class="num">08</span> Text blocks</a>
+      <a href="#images"><span class="num">09</span> Images &amp; shapes</a>
+      <a href="#tables"><span class="num">10</span> Tables</a>
+      <a href="#loaders"><span class="num">11</span> Loaders</a>
+      <a href="#icons"><span class="num">12</span> Icons</a>
+      <a href="#cursors"><span class="num">13</span> Cursors</a>
+      <a href="#devices"><span class="num">14</span> Devices</a>
+      <a href="#example"><span class="num">15</span> Example</a>
+    </nav>
+  </header>
+
+  <!-- ─────────── 01 FOUNDATIONS ─────────── -->
+  <section id="foundations" class="sys">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">01 / FOUNDATIONS</div>
+        <div class="sec-eyebrow">Why lo-fi</div>
+        <h2 class="sec-title">Sketchy on purpose.</h2>
+      </div>
+      <p class="sec-desc">Lo-fi wireframes invite feedback. Hi-fi mocks invite arguments about pixel padding. Use this kit when the conversation should be about <em>structure</em>, not polish.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="tile">
+        <div class="hand-xl">①</div>
+        <div class="hand-m"><b>Speed over polish.</b> Get a layout on the page in minutes. Throw it away in seconds.</div>
+        <div class="caption">PRINCIPLE 01</div>
+      </div>
+      <div class="tile">
+        <div class="hand-xl">②</div>
+        <div class="hand-m"><b>Honest fidelity.</b> A lo-fi sketch is obviously a sketch. Stakeholders don't argue about colors that aren't there.</div>
+        <div class="caption">PRINCIPLE 02</div>
+      </div>
+      <div class="tile">
+        <div class="hand-xl">③</div>
+        <div class="hand-m"><b>One blue.</b> Reserve a single accent for interactive elements. Everything else is graphite.</div>
+        <div class="caption">PRINCIPLE 03</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 02 TYPE ─────────── -->
+  <section id="type" class="sys tint">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">02 / TYPE</div>
+        <div class="sec-eyebrow">Text styles</div>
+        <h2 class="sec-title">Two voices.</h2>
+      </div>
+      <p class="sec-desc">A handwritten face for content placeholders, a clean sans for labels and meta. The contrast keeps real product copy out of the conversation.</p>
+    </div>
+
+    <div class="grid grid-2" style="gap:48px">
+      <div>
+        <div class="panel-head">Hand · Kalam</div>
+        <div class="stack">
+          <div class="hand-xxl">Base / XXL · 48</div>
+          <div class="hand-xl">Base / XL · 32</div>
+          <div class="hand-l">Base / L · 24</div>
+          <div class="hand-m">Base / M · 18 — body copy &amp; placeholders</div>
+          <div class="hand-s">Base / S · 16 — UI labels in components</div>
+          <div class="hand-xs">Base / XS · 14 — captions &amp; helper text</div>
+        </div>
+      </div>
+      <div>
+        <div class="panel-head">Label · Inter</div>
+        <div class="stack">
+          <div style="font:800 32px/1.1 var(--label)">Label / XL · 32 / 800</div>
+          <div style="font:700 24px/1.15 var(--label)">Label / L · 24 / 700</div>
+          <div style="font:600 18px/1.3 var(--label)">Label / M · 18 / 600</div>
+          <div style="font:600 14px/1.4 var(--label); letter-spacing:.04em; text-transform:uppercase">Section · 14 / 600 / TRACKED</div>
+          <div style="font:500 12px/1.4 var(--label); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-2)">EYEBROW · 12 / 500 / TRACKED</div>
+          <div style="font:400 13px/1.4 var(--mono); color:var(--ink-2)">mono · 13 — tokens, ids, captions</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px" class="grid grid-3">
+      <div style="width: 280px">
+        <div class="panel-head">Redacted</div>
+        <span class="redacted-line med"></span>
+        <span class="redacted-line"></span>
+        <span class="redacted-line short"></span>
+        <p class="hand-xs" style="color:var(--ink-2);margin-top:8px">When copy isn't decided yet, redact it.</p>
+      </div>
+      <div>
+        <div class="panel-head">Highlight</div>
+        <p class="hand-m">A <span class="underline-hand">key concept</span> can be highlighted in copy without color.</p>
+      </div>
+      <div>
+        <div class="panel-head">Link</div>
+        <p class="hand-m">This is a <a style="color:var(--primary); border-bottom: 2px solid var(--primary); text-decoration:none" href="#">link in body copy</a> using the primary blue.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 03 COLOR ─────────── -->
+  <section id="color" class="sys">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">03 / COLOR &amp; EFFECTS</div>
+        <div class="sec-eyebrow">Palette</div>
+        <h2 class="sec-title">One blue, lots of grey.</h2>
+      </div>
+      <p class="sec-desc">Color is reserved for interactive intent (primary) and surfaces. Everything else is intentionally drab so attention lands on layout.</p>
+    </div>
+
+    <div class="panel-head">Core</div>
+    <div class="grid grid-4" style="margin-bottom: 36px">
+      <div class="swatch"><div class="chip" style="background:var(--primary); border-color:var(--primary-2)"></div><div class="meta"><b>Primary</b><code>#0066ff</code></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--ink); border-color:var(--ink)"></div><div class="meta"><b>Text · Normal</b><code>#111111</code></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--ink-2); border-color:var(--ink-2)"></div><div class="meta"><b>Text · Subtle</b><code>#767676</code></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--line); border-color:var(--line)"></div><div class="meta"><b>Border · Normal</b><code>#aaaaaa</code></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--line-soft); border-color:var(--line-2)"></div><div class="meta"><b>Border · Subtle</b><code>#d9d9d9</code></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--paper); border-color:var(--line-2)"></div><div class="meta"><b>Surface</b><code>#ffffff</code></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--paper-3); border-color:var(--line-2)"></div><div class="meta"><b>Background</b><code>#eeeeee</code></div></div>
+    </div>
+
+    <div class="panel-head">Highlight</div>
+    <div class="grid grid-4" style="margin-bottom: 36px">
+      <div class="swatch"><div class="chip" style="background:var(--highlight)"></div><div class="meta"><b>Highlight</b><code>rgba(255,235,59,.55)</code></div></div>
+    </div>
+
+    <div class="panel-head">Effect · Borders &amp; shadows</div>
+    <div class="grid grid-4">
+      <div style="background:#fff; border-bottom: 3px solid var(--primary); padding: 18px 16px; font-family:var(--label); font-size:13px"><b>Bottom border · Active</b><div style="color:var(--ink-2)">3px / Primary</div></div>
+      <div style="background:#fff; border-bottom: 2px solid var(--line-soft); padding: 18px 16px; font-family:var(--label); font-size:13px"><b>Bottom border · Inactive</b><div style="color:var(--ink-2)">2px / Border subtle</div></div>
+      <div style="background:#fff; border: 2px solid var(--ink); padding: 18px 16px; font-family:var(--label); font-size:13px"><b>Outline · Active</b><div style="color:var(--ink-2)">2px / Ink</div></div>
+      <div style="background:#fff; border: 2px solid var(--line); padding: 18px 16px; font-family:var(--label); font-size:13px"><b>Outline · Inactive</b><div style="color:var(--ink-2)">2px / Border</div></div>
+    </div>
+
+    <div class="panel-head" style="margin-top:36px">Shadows</div>
+    <div class="row" style="gap: 32px">
+      <div class="shadow-card shadow-1">SHADOW · 1</div>
+      <div class="shadow-card shadow-2">SHADOW · 2</div>
+      <div class="shadow-card shadow-3">SHADOW · 3</div>
+    </div>
+  </section>
+
+  <!-- ─────────── 04 SPACING ─────────── -->
+  <section id="spacing" class="sys tint-2">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">04 / SPACING &amp; GRID</div>
+        <div class="sec-eyebrow">Tokens</div>
+        <h2 class="sec-title">An 8-point ruler.</h2>
+      </div>
+      <p class="sec-desc">All component padding, gaps and corner radii snap to multiples of 4. This is what makes lo-fi sketches still look composed.</p>
+    </div>
+
+    <div class="grid grid-2" style="gap: 56px">
+      <div>
+        <div class="panel-head">Spacing scale</div>
+        <div class="stack" style="gap: 6px">
+          <div class="row" style="gap:16px"><div style="font-family:var(--mono);font-size:12px;width:60px">space-1</div><div style="height:8px;width:4px;background:var(--ink)"></div><div class="hand-xs">4 px</div></div>
+          <div class="row" style="gap:16px"><div style="font-family:var(--mono);font-size:12px;width:60px">space-2</div><div style="height:8px;width:8px;background:var(--ink)"></div><div class="hand-xs">8 px</div></div>
+          <div class="row" style="gap:16px"><div style="font-family:var(--mono);font-size:12px;width:60px">space-3</div><div style="height:8px;width:12px;background:var(--ink)"></div><div class="hand-xs">12 px</div></div>
+          <div class="row" style="gap:16px"><div style="font-family:var(--mono);font-size:12px;width:60px">space-4</div><div style="height:8px;width:16px;background:var(--ink)"></div><div class="hand-xs">16 px</div></div>
+          <div class="row" style="gap:16px"><div style="font-family:var(--mono);font-size:12px;width:60px">space-6</div><div style="height:8px;width:24px;background:var(--ink)"></div><div class="hand-xs">24 px</div></div>
+          <div class="row" style="gap:16px"><div style="font-family:var(--mono);font-size:12px;width:60px">space-8</div><div style="height:8px;width:32px;background:var(--ink)"></div><div class="hand-xs">32 px</div></div>
+          <div class="row" style="gap:16px"><div style="font-family:var(--mono);font-size:12px;width:60px">space-12</div><div style="height:8px;width:48px;background:var(--ink)"></div><div class="hand-xs">48 px</div></div>
+          <div class="row" style="gap:16px"><div style="font-family:var(--mono);font-size:12px;width:60px">space-16</div><div style="height:8px;width:64px;background:var(--ink)"></div><div class="hand-xs">64 px</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="panel-head">Corner radius</div>
+        <div class="row" style="gap:18px">
+          <div style="text-align:center"><div style="width:64px;height:64px;background:#fff;border:2px solid var(--ink);border-radius:0"></div><div class="hand-xs" style="margin-top:6px">0</div></div>
+          <div style="text-align:center"><div style="width:64px;height:64px;background:#fff;border:2px solid var(--ink);border-radius:2px"></div><div class="hand-xs" style="margin-top:6px">2</div></div>
+          <div style="text-align:center"><div style="width:64px;height:64px;background:#fff;border:2px solid var(--ink);border-radius:4px"></div><div class="hand-xs" style="margin-top:6px">4</div></div>
+          <div style="text-align:center"><div style="width:64px;height:64px;background:#fff;border:2px solid var(--ink);border-radius:8px"></div><div class="hand-xs" style="margin-top:6px">8</div></div>
+          <div style="text-align:center"><div style="width:64px;height:64px;background:#fff;border:2px solid var(--ink);border-radius:50%"></div><div class="hand-xs" style="margin-top:6px">∞</div></div>
+        </div>
+
+        <div class="panel-head" style="margin-top:32px">Stroke weights</div>
+        <div class="stack" style="gap:8px">
+          <div style="border-top: 1px solid var(--ink); padding-top:6px" class="hand-xs">1 px · subtle dividers</div>
+          <div style="border-top: 1.5px solid var(--ink); padding-top:6px" class="hand-xs">1.5 px · table cells</div>
+          <div style="border-top: 2px solid var(--ink); padding-top:6px" class="hand-xs">2 px · default outline</div>
+          <div style="border-top: 3px solid var(--ink); padding-top:6px" class="hand-xs">3 px · active accent</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 05 BUTTONS ─────────── -->
+  <section id="buttons" class="sys">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">05 / BUTTONS</div>
+        <div class="sec-eyebrow">Action</div>
+        <h2 class="sec-title">Buttons.</h2>
+      </div>
+      <p class="sec-desc">Three styles × three sizes, with optional leading/trailing icons. Each button has icon layers that can be turned on or off.</p>
+    </div>
+
+    <div class="grid grid-3" style="gap: 32px">
+      <div>
+        <div class="panel-head">Solid</div>
+        <div class="stack">
+          <div class="row"><button class="btn lg">Large</button><button class="btn">Medium</button><button class="btn sm">Small</button></div>
+          <div class="row"><button class="btn lg"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>Leading</button>
+            <button class="btn">Trailing<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <button class="btn sm solid-disabled">Disabled</button></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel-head">Outlined</div>
+        <div class="stack">
+          <div class="row"><button class="btn outline lg">Large</button><button class="btn outline">Medium</button><button class="btn outline sm">Small</button></div>
+          <div class="row"><button class="btn outline"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>Leading</button>
+            <button class="btn outline">Trailing<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel-head">Text</div>
+        <div class="stack">
+          <div class="row"><button class="btn text lg">Large</button><button class="btn text">Medium</button><button class="btn text sm">Small</button></div>
+          <div class="row"><button class="btn text">Trailing<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:36px" class="grid grid-2" >
+      <div>
+        <div class="panel-head">Icon button</div>
+        <div class="row">
+          <button class="ibtn lg solid"><svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+          <button class="ibtn solid"><svg class="icon sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+          <button class="ibtn sm solid"><svg class="icon sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+          <button class="ibtn"><svg class="icon sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+          <button class="ibtn round solid"><svg class="icon sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+          <button class="ibtn round"><svg class="icon sm" viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg></button>
+        </div>
+      </div>
+      <div>
+        <div class="panel-head">Button group</div>
+        <div class="row">
+          <div class="btn-group">
+            <button class="on">Day</button>
+            <button>Week</button>
+            <button>Month</button>
+          </div>
+          <div class="btn-group">
+            <button><svg class="icon sm" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+            <button class="on"><svg class="icon sm" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button>
+            <button><svg class="icon sm" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 06 FORMS ─────────── -->
+  <section id="forms" class="sys tint">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">06 / FORMS</div>
+        <div class="sec-eyebrow">Inputs &amp; selection</div>
+        <h2 class="sec-title">Form controls.</h2>
+      </div>
+      <p class="sec-desc">Selection controls have text-label layers that can be toggled. Field labels, helper text and error states share one rhythm.</p>
+    </div>
+
+    <div class="grid grid-3" style="gap: 32px">
+      <div>
+        <div class="panel-head">Text fields</div>
+        <div class="stack">
+          <div class="field"><div class="field-label">Label</div><div class="input"><input placeholder="Placeholder text" /></div><div class="field-help">Helper text goes here.</div></div>
+          <div class="field"><div class="field-label">Focused</div><div class="input focus"><input value="Typing…" /></div></div>
+          <div class="field error"><div class="field-label">Error</div><div class="input"><input value="not-an-email" /></div><div class="field-error">Please enter a valid email.</div></div>
+          <div class="field"><div class="field-label">With icon</div>
+            <div class="input"><svg class="icon sm" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input placeholder="Search" /></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel-head">Selection · No label</div>
+        <div class="stack">
+          <div class="row" style="gap: 24px">
+            <span class="radio on"><span class="dot"></span></span>
+            <span class="radio"><span class="dot"></span></span>
+            <span class="check on"><span class="box"></span></span>
+            <span class="check"><span class="box"></span></span>
+            <span class="check indet"><span class="box"></span></span>
+            <span class="switch on"></span>
+            <span class="switch"></span>
+          </div>
+          <div class="panel-head" style="margin-top:8px">With label</div>
+          <span class="radio on"><span class="dot"></span> Selected</span>
+          <span class="radio"><span class="dot"></span> Unselected</span>
+          <span class="check on"><span class="box"></span> Checked</span>
+          <span class="check"><span class="box"></span> Unchecked</span>
+          <span class="check indet"><span class="box"></span> Indeterminate</span>
+          <div class="row" style="gap:10px"><span class="switch on"></span> <span class="hand-s">On</span></div>
+          <div class="row" style="gap:10px"><span class="switch"></span> <span class="hand-s">Off</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel-head">Slider &amp; dropdown</div>
+        <div class="stack">
+          <div class="row" style="gap:10px">
+            <svg class="icon sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/></svg>
+            <div class="slider-bar"></div>
+            <svg class="icon sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>
+          </div>
+          <div class="field">
+            <div class="field-label">Dropdown · Inactive</div>
+            <div class="input" style="cursor:pointer"><span class="hand-s" style="flex:1; color: var(--ink-2)">Choose…</span><svg class="icon sm" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+          </div>
+          <div class="field">
+            <div class="field-label">Dropdown · Active</div>
+            <div class="input focus" style="cursor:pointer"><span class="hand-s" style="flex:1">Option two</span><svg class="icon sm" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M6 15l6-6 6 6"/></svg></div>
+            <div style="border:2px solid var(--primary); border-top:none; background:#fff; border-radius: 0 0 4px 4px">
+              <div class="hand-s" style="padding:8px 12px">Option one</div>
+              <div class="hand-s" style="padding:8px 12px; background:var(--paper-tint); color:var(--primary)">Option two ✓</div>
+              <div class="hand-s" style="padding:8px 12px">Option three</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 07 TABS & PILLS ─────────── -->
+  <section id="tabs" class="sys">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">07 / TABS &amp; PILLS</div>
+        <div class="sec-eyebrow">Navigation</div>
+        <h2 class="sec-title">Tabs &amp; pills.</h2>
+      </div>
+      <p class="sec-desc">Horizontal and vertical tabs share an active treatment (3 px primary edge). Pills come in three sizes and active/inactive states.</p>
+    </div>
+
+    <div class="grid grid-2" style="gap: 32px">
+      <div>
+        <div class="panel-head">Horizontal tabs · text</div>
+        <div class="tabs"><span class="on">Overview</span><span>Activity</span><span>Settings</span></div>
+
+        <div class="panel-head" style="margin-top:24px">Horizontal tabs · with icons</div>
+        <div class="tabs">
+          <span class="on"><svg class="icon sm" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" style="vertical-align:-3px;margin-right:6px"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg>Home</span>
+          <span><svg class="icon sm" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" style="vertical-align:-3px;margin-right:6px"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>History</span>
+          <span><svg class="icon sm" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" style="vertical-align:-3px;margin-right:6px"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a8 8 0 000-6l1.6-1.6-2-3.4-2.2.6a8 8 0 00-5.2-3L11 0H7.6L7 1.6A8 8 0 002 4.6L0 4 -2 7.4 -.4 9a8 8 0 000 6l-1.6 1.6 2 3.4 2.2-.6a8 8 0 005.2 3L7 24h3.4L11 22.4a8 8 0 005.2-3l2.2.6 2-3.4-1.6-1.6z"/></svg>Settings</span>
+        </div>
+
+        <div class="panel-head" style="margin-top:24px">Horizontal tabs · top icons</div>
+        <div class="tabs">
+          <span class="on" style="display:flex; flex-direction:column; align-items:center; gap:4px"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg>Home</span>
+          <span style="display:flex; flex-direction:column; align-items:center; gap:4px"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Search</span>
+          <span style="display:flex; flex-direction:column; align-items:center; gap:4px"><svg class="icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel-head">Vertical tabs</div>
+        <div class="vtabs">
+          <span class="on">General</span>
+          <span>Account</span>
+          <span>Notifications</span>
+          <span>Billing</span>
+          <span>Integrations</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-3" style="margin-top: 36px; gap: 32px">
+      <div>
+        <div class="panel-head">Pills · inactive</div>
+        <div class="row">
+          <span class="pill lg">Large</span>
+          <span class="pill">Medium</span>
+          <span class="pill sm">Small</span>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <span class="pill"><svg class="icon sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>With icon</span>
+          <span class="pill">With icon<svg class="icon sm" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+        </div>
+      </div>
+      <div>
+        <div class="panel-head">Pills · active</div>
+        <div class="row">
+          <span class="pill on lg">Large</span>
+          <span class="pill on">Medium</span>
+          <span class="pill on sm">Small</span>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <span class="pill on"><svg class="icon sm" viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg>Selected</span>
+          <span class="pill muted">Muted</span>
+        </div>
+      </div>
+      <div>
+        <div class="panel-head">Mobile tab bar</div>
+        <div class="mtab">
+          <div class="on"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg>Home</div>
+          <div><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Search</div>
+          <div><svg class="icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>You</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 08 TEXT BLOCKS ─────────── -->
+  <section id="text" class="sys tint-2">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">08 / TEXT BLOCKS</div>
+        <div class="sec-eyebrow">Compositions</div>
+        <h2 class="sec-title">Text patterns.</h2>
+      </div>
+      <p class="sec-desc">Common text + icon arrangements: leading, trailing and top-stacked. Used inside cells, list rows, empty states.</p>
+    </div>
+
+    <div class="grid grid-3" style="gap: 32px">
+      <div>
+        <div class="panel-head">Leading icon</div>
+        <div class="stack" style="gap:14px">
+          <div class="row" style="gap:10px"><svg class="icon" viewBox="0 0 24 24"><path d="M12 8v8M8 12h8"/><circle cx="12" cy="12" r="9"/></svg><span class="hand-l">Extra Large</span></div>
+          <div class="row" style="gap:10px"><svg class="icon" viewBox="0 0 24 24"><path d="M12 8v8M8 12h8"/><circle cx="12" cy="12" r="9"/></svg><span class="hand-m">Large</span></div>
+          <div class="row" style="gap:10px"><svg class="icon sm" viewBox="0 0 24 24"><path d="M12 8v8M8 12h8"/><circle cx="12" cy="12" r="9"/></svg><span class="hand-s">Medium</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="panel-head">Trailing icon</div>
+        <div class="stack" style="gap:14px">
+          <div class="row" style="gap:10px; justify-content:flex-start"><span class="hand-l">Extra Large</span><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="row" style="gap:10px"><span class="hand-m">Large</span><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="row" style="gap:10px"><span class="hand-s">Medium</span><svg class="icon sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+      </div>
+      <div>
+        <div class="panel-head">Top icon</div>
+        <div class="row" style="gap:32px; align-items:flex-start">
+          <div style="text-align:center"><svg class="icon lg" viewBox="0 0 24 24"><path d="M12 8v8M8 12h8"/><circle cx="12" cy="12" r="9"/></svg><div class="hand-m" style="margin-top:6px">XL</div></div>
+          <div style="text-align:center"><svg class="icon" viewBox="0 0 24 24"><path d="M12 8v8M8 12h8"/><circle cx="12" cy="12" r="9"/></svg><div class="hand-s" style="margin-top:6px">L</div></div>
+          <div style="text-align:center"><svg class="icon sm" viewBox="0 0 24 24"><path d="M12 8v8M8 12h8"/><circle cx="12" cy="12" r="9"/></svg><div class="hand-xs" style="margin-top:6px">M</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-2" style="margin-top: 32px; gap: 32px">
+      <div>
+        <div class="panel-head">Paragraph · placeholder</div>
+        <p class="hand-m" style="margin:0">Lorem ipsum dolor sit amet, consec­tetur adipiscing elit. Nam condimentum tempus diam, ultricies sollicitudin erat facilisis eget. Vestibulum rhoncus dui vel eros laoreet consectetur. Vivamus eget elementum ligula, vitae pharetra quam.</p>
+      </div>
+      <div style="width: 50px">
+        <div class="panel-head">Paragraph · redacted</div>
+        <span class="redacted-line"></span>
+        <span class="redacted-line"></span>
+        <span class="redacted-line med"></span>
+        <span class="redacted-line"></span>
+        <span class="redacted-line short"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 09 IMAGES & SHAPES ─────────── -->
+  <section id="images" class="sys">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">09 / IMAGES &amp; SHAPES</div>
+        <div class="sec-eyebrow">Media placeholders</div>
+        <h2 class="sec-title">Stand-ins for art.</h2>
+      </div>
+      <p class="sec-desc">Drop in for any image, video, map or avatar. The X marks the spot — never use real photos in lo-fi.</p>
+    </div>
+
+    <div class="grid grid-4" style="gap: 24px">
+      <div class="tile">
+        <div class="img-ph" style="width:160px;height:120px"></div>
+        <div class="caption">IMAGE · 4:3</div>
+      </div>
+      <div class="tile">
+        <div class="img-ph" style="width:120px;height:120px"></div>
+        <div class="caption">IMAGE · 1:1</div>
+      </div>
+      <div class="tile">
+        <div class="img-ph alt" style="width:160px;height:120px; display:flex; align-items:flex-end; justify-content:center; padding:0">
+          <svg viewBox="0 0 100 60" style="width:100%; height:100%; display:block">
+            <rect x="0" y="0" width="100" height="60" fill="var(--line-soft)"/>
+            <path d="M0,55 L25,30 L40,42 L60,18 L85,38 L100,28 L100,60 L0,60 Z" fill="var(--line-2)" />
+            <circle cx="78" cy="14" r="6" fill="var(--line-2)"/>
+          </svg>
+        </div>
+        <div class="caption">IMAGE · ALT</div>
+      </div>
+      <div class="tile">
+        <div class="row">
+          <div class="avatar"><svg viewBox="0 0 36 30"><path fill="currentColor" d="M18 0a8 8 0 110 16 8 8 0 010-16zm0 18c8 0 18 4 18 12H0c0-8 10-12 18-12z"/></svg></div>
+          <div class="avatar lg"><svg viewBox="0 0 36 30"><path fill="currentColor" d="M18 0a8 8 0 110 16 8 8 0 010-16zm0 18c8 0 18 4 18 12H0c0-8 10-12 18-12z"/></svg></div>
+          <div class="avatar sm"><svg viewBox="0 0 36 30"><path fill="currentColor" d="M18 0a8 8 0 110 16 8 8 0 010-16zm0 18c8 0 18 4 18 12H0c0-8 10-12 18-12z"/></svg></div>
+        </div>
+        <div class="caption">AVATARS</div>
+      </div>
+      <div class="tile">
+        <div style="position:relative; width:200px; height:120px; background:var(--line-soft); border:2px solid var(--line)">
+          <svg viewBox="0 0 200 120" style="position:absolute; inset:0; width:100%; height:100%">
+            <circle cx="100" cy="60" r="22" fill="none" stroke="var(--line)" stroke-width="2"/>
+            <polygon points="92,48 92,72 116,60" fill="var(--line)"/>
+          </svg>
+          <div style="position:absolute; left:12px; right:12px; bottom:10px; height:4px; background:var(--line);"></div>
+          <div style="position:absolute; left:30px; bottom:8px; width:8px; height:8px; border-radius:50%; background:#fff; border:1.5px solid var(--line)"></div>
+        </div>
+        <div class="caption">VIDEO</div>
+      </div>
+      <div class="tile">
+        <div style="position:relative; width:200px; height:120px; background: repeating-linear-gradient(45deg, #e9efe9, #e9efe9 6px, #e0e8e1 6px, #e0e8e1 12px); border:2px solid var(--line); overflow:hidden">
+          <svg viewBox="0 0 200 120" style="position:absolute; inset:0; width:100%; height:100%">
+            <path d="M10,90 Q60,40 120,70 T200,40" fill="none" stroke="var(--line)" stroke-width="2" />
+            <circle cx="120" cy="60" r="6" fill="#fff" stroke="var(--ink)" stroke-width="2"/>
+          </svg>
+          <div style="position:absolute; right:6px; top:6px; width:18px; background:#fff; border:1.5px solid var(--line); border-radius:3px;">
+            <div style="font-family:var(--mono); font-size:11px; text-align:center; line-height: 18px; border-bottom:1.5px solid var(--line)">+</div>
+            <div style="font-family:var(--mono); font-size:11px; text-align:center; line-height: 18px;">−</div>
+          </div>
+        </div>
+        <div class="caption">MAP</div>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 200 100" style="width:200px; height:100px">
+          <g fill="var(--line-2)" stroke="var(--line)" stroke-width="1.5">
+            <rect x="6"  y="50" width="20" height="50"/>
+            <rect x="32" y="30" width="20" height="70"/>
+            <rect x="58" y="60" width="20" height="40"/>
+            <rect x="84" y="20" width="20" height="80"/>
+            <rect x="110" y="42" width="20" height="58"/>
+            <rect x="136" y="14" width="20" height="86"/>
+            <rect x="162" y="36" width="20" height="64"/>
+          </g>
+        </svg>
+        <div class="caption">CHART · BAR</div>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 200 100" style="width:200px; height:100px">
+          <polyline points="0,80 30,55 60,68 90,30 130,50 160,18 200,40" fill="none" stroke="var(--ink)" stroke-width="2"/>
+          <g fill="#fff" stroke="var(--ink)" stroke-width="2">
+            <circle cx="0" cy="80" r="3"/><circle cx="30" cy="55" r="3"/><circle cx="60" cy="68" r="3"/>
+            <circle cx="90" cy="30" r="3"/><circle cx="130" cy="50" r="3"/><circle cx="160" cy="18" r="3"/><circle cx="200" cy="40" r="3"/>
+          </g>
+        </svg>
+        <div class="caption">CHART · LINE</div>
+      </div>
+    </div>
+
+    <div class="panel-head" style="margin-top:32px">Shapes</div>
+    <div class="row" style="gap:24px">
+      <div style="text-align:center"><div class="shape-rect"></div><div class="hand-xs" style="margin-top:6px">Rectangle</div></div>
+      <div style="text-align:center"><div class="shape-circ"></div><div class="hand-xs" style="margin-top:6px">Circle</div></div>
+      <div style="text-align:center"><svg viewBox="0 0 80 80" width="80" height="80"><polygon points="40,5 75,75 5,75" fill="#fff" stroke="var(--ink)" stroke-width="2"/></svg><div class="hand-xs">Triangle</div></div>
+      <div style="text-align:center"><div style="width:80px"><div class="shape-line"></div></div><div class="hand-xs" style="margin-top:6px">Line</div></div>
+      <div style="text-align:center"><svg viewBox="0 0 80 80" width="80" height="80"><polygon points="40,5 75,40 40,75 5,40" fill="#fff" stroke="var(--ink)" stroke-width="2"/></svg><div class="hand-xs">Diamond</div></div>
+    </div>
+  </section>
+
+  <!-- ─────────── 10 TABLES ─────────── -->
+  <section id="tables" class="sys tint">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">10 / TABLES</div>
+        <div class="sec-eyebrow">Data layout</div>
+        <h2 class="sec-title">Cells &amp; columns.</h2>
+      </div>
+      <p class="sec-desc">A 6×6 grid is the most we'll go in lo-fi. Real data densities live in hi-fi mocks; here we just block out shape.</p>
+    </div>
+
+    <table class="tbl">
+      <thead><tr>
+        <th>Name</th><th>Status</th><th>Owner</th><th>Updated</th><th>Tags</th><th></th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="hand-s">Project Alpha</td><td><span class="pill on sm">Active</span></td><td class="hand-s">A. Smith</td><td class="hand-s">Mar 12</td><td class="hand-s">Design, UX</td><td><svg class="icon sm" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></td></tr>
+        <tr><td class="hand-s">Project Beta</td><td><span class="pill sm">Draft</span></td><td class="hand-s">M. Lee</td><td class="hand-s">Mar 09</td><td class="hand-s">Eng</td><td><svg class="icon sm" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></td></tr>
+        <tr><td class="hand-s">Project Gamma</td><td><span class="pill on sm">Active</span></td><td class="hand-s">R. Patel</td><td class="hand-s">Mar 04</td><td class="hand-s">Ops</td><td><svg class="icon sm" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></td></tr>
+        <tr><td class="hand-s">Project Delta</td><td><span class="pill muted sm">Paused</span></td><td class="hand-s">K. Ng</td><td class="hand-s">Feb 22</td><td class="hand-s">Marketing</td><td><svg class="icon sm" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ─────────── 11 LOADERS ─────────── -->
+  <section id="loaders" class="sys">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">11 / LOADERS</div>
+        <div class="sec-eyebrow">Pending state</div>
+        <h2 class="sec-title">Loaders &amp; skeletons.</h2>
+      </div>
+      <p class="sec-desc">For async surfaces: a progress bar, a spinner and three skeleton rows. Animate sparingly.</p>
+    </div>
+
+    <div class="grid grid-3" style="gap:32px; align-items:flex-start">
+      <div class="tile">
+        <div class="progress"><div></div></div>
+        <div class="caption">PROGRESS · 35%</div>
+      </div>
+      <div class="tile">
+        <div class="spinner"></div>
+        <div class="caption">SPINNER</div>
+      </div>
+      <div class="tile" style="width:280px">
+        <div class="skeleton" style="width:60%"></div>
+        <div class="skeleton" style="width:90%"></div>
+        <div class="skeleton" style="width:40%"></div>
+        <div class="caption">SKELETON · TEXT</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 12 ICONS ─────────── -->
+  <section id="icons" class="sys tint-2">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">12 / ICONS</div>
+        <div class="sec-eyebrow">Glyph set</div>
+        <h2 class="sec-title">Stroke icons · 24 px.</h2>
+      </div>
+      <p class="sec-desc">A starter set, all 2 px stroke at 24 px. Drawn in the Feather idiom — round caps, round joins, no fills.</p>
+    </div>
+
+    <div class="icon-grid">
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg><span class="name">home</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span class="name">search</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span class="name">user</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span class="name">download</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.4 8.4 0 01-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.4 8.4 0 013.8-.9h.5a8.5 8.5 0 018 8v.5z"/></svg><span class="name">message</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><span class="name">bell</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a8 8 0 000-6l1.6-1.6-2-3.4-2.2.6a8 8 0 00-5.2-3L11 0H7.6L7 1.6"/></svg><span class="name">settings</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span class="name">heart</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 17 14 19 21 12 17 5 21 7 14 2 9 9 9 12 2"/></svg><span class="name">star</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span class="name">plus</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14"/></svg><span class="name">minus</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg><span class="name">x</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M5 12l5 5 9-11"/></svg><span class="name">check</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span class="name">chevron-d</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span class="name">chevron-r</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg><span class="name">menu</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg><span class="name">more</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg><span class="name">close-2</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M3 7l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg><span class="name">mail</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="name">cal</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span class="name">clock</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M21 11.5l-9 9-9-9 9-9 9 9z"/></svg><span class="name">tag</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg><span class="name">trash</span></div>
+      <div class="ic-cell"><svg class="icon" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg><span class="name">edit</span></div>
+    </div>
+  </section>
+
+  <!-- ─────────── 13 CURSORS ─────────── -->
+  <section id="cursors" class="sys">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">13 / CURSORS</div>
+        <div class="sec-eyebrow">Interaction hints</div>
+        <h2 class="sec-title">Cursors.</h2>
+      </div>
+      <p class="sec-desc">For annotating click-targets, drag handles and grab states in static screens.</p>
+    </div>
+
+    <div class="row" style="gap:48px">
+      <div style="text-align:center">
+        <svg class="cursor" viewBox="0 0 24 24"><polygon points="3,2 3,18 8,14 11,21 14,20 11,13 18,13" fill="#fff" stroke="var(--ink)" stroke-width="1.5"/></svg>
+        <div class="hand-xs">arrow</div>
+      </div>
+      <div style="text-align:center">
+        <svg class="cursor" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 113 0V11M12 11V4a1.5 1.5 0 113 0v7M15 11V5.5a1.5 1.5 0 113 0V13c0 4-3 7-6 7H8c-3 0-6-3-6-6 0-1 1-2 2-2h2a4 4 0 014 4" fill="#fff" stroke="var(--ink)" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <div class="hand-xs">pointer</div>
+      </div>
+      <div style="text-align:center">
+        <svg class="cursor" viewBox="0 0 24 24"><path d="M9 9V4a1.5 1.5 0 113 0v5M12 9V3a1.5 1.5 0 113 0v6M15 9V4a1.5 1.5 0 113 0v9c0 4-3 7-6 7H8c-3 0-6-3-6-6 0-1 1-2 2-2h2a4 4 0 014 4" fill="#fff" stroke="var(--ink)" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <div class="hand-xs">grab</div>
+      </div>
+      <div style="text-align:center">
+        <svg class="cursor" viewBox="0 0 24 24"><path d="M6 12c0-3 2-5 5-5h2c3 0 5 2 5 5v3c0 3-2 5-5 5h-2c-3 0-5-2-5-5z" fill="#fff" stroke="var(--ink)" stroke-width="1.5"/><path d="M9 9v6M12 9v6M15 9v6" stroke="var(--ink)" stroke-width="1.5"/></svg>
+        <div class="hand-xs">grabbing</div>
+      </div>
+      <div style="text-align:center">
+        <svg class="cursor" viewBox="0 0 24 24"><path d="M12 4v16M8 8l4-4 4 4M8 16l4 4 4-4" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="hand-xs">resize</div>
+      </div>
+      <div style="text-align:center">
+        <svg class="cursor" viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="21" stroke="var(--ink)" stroke-width="1.5"/><line x1="9" y1="3" x2="15" y2="3" stroke="var(--ink)" stroke-width="1.5"/><line x1="9" y1="21" x2="15" y2="21" stroke="var(--ink)" stroke-width="1.5"/></svg>
+        <div class="hand-xs">text</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 14 DEVICES ─────────── -->
+  <section id="devices" class="sys tint">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">14 / DEVICES</div>
+        <div class="sec-eyebrow">Frames</div>
+        <h2 class="sec-title">Devices &amp; chrome.</h2>
+      </div>
+      <p class="sec-desc">Bare-bones bezels: an iPhone, an Android, a desktop browser. Drop your wireframe inside the screen area.</p>
+    </div>
+
+    <div class="row" style="gap: 48px; align-items:flex-start">
+      <div style="text-align:center">
+        <div class="device-iphone">
+          <div class="notch"></div>
+          <div class="screen"></div>
+          <div class="home"></div>
+        </div>
+        <div class="hand-xs" style="margin-top:8px">iPhone · 375 × 812</div>
+      </div>
+      <div style="text-align:center">
+        <div class="device-android">
+          <div class="speaker"></div>
+          <div class="cam"></div>
+          <div class="screen"></div>
+          <div class="home"></div>
+        </div>
+        <div class="hand-xs" style="margin-top:8px">Android · 360 × 720</div>
+      </div>
+      <div style="flex:1; min-width: 360px">
+        <div class="browser">
+          <div class="chrome">
+            <div class="lights"><span></span><span></span><span></span></div>
+            <div class="url">www.example-app.com</div>
+          </div>
+          <div class="body img-ph alt"></div>
+        </div>
+        <div class="hand-xs" style="margin-top:8px; text-align:center">Browser · 1280 × 720</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 15 EXAMPLE ─────────── -->
+  <section id="example" class="sys dark">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">15 / EXAMPLE</div>
+        <div class="sec-eyebrow">Putting it together</div>
+        <h2 class="sec-title" style="color:#fff">Everything in one screen.</h2>
+      </div>
+      <p class="sec-desc" style="color: rgba(255,255,255,.7)">A made-up dashboard: header, sidebar, table, chart, modal trigger — all built from this kit's primitives.</p>
+    </div>
+
+    <div style="background:#fff; color:var(--ink); border-radius:8px; overflow:hidden; border:2px solid #fff">
+      <!-- topbar -->
+      <div style="display:flex; align-items:center; gap:16px; padding: 12px 18px; border-bottom: 2px solid var(--line-soft)">
+        <div class="hand-xl" style="font-size:22px; font-weight:700">◐ wireframe.app</div>
+        <div class="tabs" style="border-bottom:none; margin-left:24px">
+          <span class="on">Dashboard</span><span>Reports</span><span>Settings</span>
+        </div>
+        <div style="flex:1"></div>
+        <div class="input" style="min-width:240px"><svg class="icon sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input placeholder="Search…"/></div>
+        <button class="ibtn"><svg class="icon sm" viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg></button>
+        <div class="avatar sm"><svg viewBox="0 0 36 30"><path fill="currentColor" d="M18 0a8 8 0 110 16 8 8 0 010-16zm0 18c8 0 18 4 18 12H0c0-8 10-12 18-12z"/></svg></div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 200px 1fr; min-height: 480px">
+        <!-- sidebar -->
+        <div style="border-right: 2px solid var(--line-soft); padding: 18px 14px">
+          <div class="vtabs" style="border-left: 2px solid var(--line-soft)">
+            <span class="on">Overview</span>
+            <span>Activity</span>
+            <span>Pipeline</span>
+            <span>Customers</span>
+            <span>Settings</span>
+          </div>
+        </div>
+
+        <!-- main -->
+        <div style="padding: 22px 24px; display:flex; flex-direction:column; gap:22px">
+          <div class="row" style="justify-content:space-between">
+            <div>
+              <div class="hand-xl">Overview</div>
+              <div class="hand-s" style="color:var(--ink-2)">Last updated · just now</div>
+            </div>
+            <div class="row">
+              <div class="btn-group">
+                <button class="on">Day</button><button>Week</button><button>Month</button>
+              </div>
+              <button class="btn"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>New</button>
+            </div>
+          </div>
+
+          <div class="grid grid-3">
+            <div class="tile" style="border-style:solid; border-color: var(--line-soft)"><span class="hand-s" style="color:var(--ink-2)">Active users</span><div class="hand-xl">12,408</div><span class="pill on sm">+8.2%</span></div>
+            <div class="tile" style="border-style:solid; border-color: var(--line-soft)"><span class="hand-s" style="color:var(--ink-2)">Revenue</span><div class="hand-xl">$84,200</div><span class="pill sm">−1.4%</span></div>
+            <div class="tile" style="border-style:solid; border-color: var(--line-soft)"><span class="hand-s" style="color:var(--ink-2)">Open issues</span><div class="hand-xl">23</div><span class="pill muted sm">stable</span></div>
+          </div>
+
+          <div style="border:2px solid var(--line-soft); border-radius:6px; padding: 16px">
+            <div class="hand-m" style="margin-bottom:8px">Engagement</div>
+            <svg viewBox="0 0 600 180" style="width:100%; height: 180px">
+              <polyline points="0,150 60,120 120,135 180,80 240,110 300,60 360,90 420,40 480,70 540,30 600,55" fill="none" stroke="var(--primary)" stroke-width="2.5"/>
+              <polyline points="0,165 60,150 120,158 180,128 240,140 300,118 360,130 420,108 480,120 540,98 600,112" fill="none" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="4 4"/>
+            </svg>
+          </div>
+
+          <!-- Populated table -->
+          <div style="border:2px solid var(--line-soft); border-radius:6px; padding: 16px">
+            <div class="row" style="justify-content:space-between; margin-bottom: 12px">
+              <div class="hand-m">Recent customers</div>
+              <div class="row" style="gap:8px">
+                <div class="input" style="min-width:160px; padding: 6px 10px"><svg class="icon sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input placeholder="Filter…"/></div>
+                <button class="btn outline sm">Export</button>
+              </div>
+            </div>
+            <table class="tbl" style="width:100%">
+              <thead><tr>
+                <th style="width: 28px"><span class="check"><span class="box"></span></span></th>
+                <th>Customer</th><th>Plan</th><th>MRR</th><th>Status</th><th>Owner</th><th>Last seen</th><th></th>
+              </tr></thead>
+              <tbody>
+                <tr><td><span class="check on"><span class="box"></span></span></td><td class="hand-s">Acme Industries</td><td class="hand-s">Enterprise</td><td class="hand-s">$4,800</td><td><span class="pill on sm">Active</span></td><td><div class="row" style="gap:6px"><div class="avatar sm"><svg viewBox="0 0 36 30"><path fill="currentColor" d="M18 0a8 8 0 110 16 8 8 0 010-16zm0 18c8 0 18 4 18 12H0c0-8 10-12 18-12z"/></svg></div><span class="hand-s">A. Smith</span></div></td><td class="hand-s">2m ago</td><td><svg class="icon sm" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></td></tr>
+                <tr><td><span class="check on"><span class="box"></span></span></td><td class="hand-s">Globex Corp</td><td class="hand-s">Pro</td><td class="hand-s">$1,200</td><td><span class="pill on sm">Active</span></td><td><div class="row" style="gap:6px"><div class="avatar sm"><svg viewBox="0 0 36 30"><path fill="currentColor" d="M18 0a8 8 0 110 16 8 8 0 010-16zm0 18c8 0 18 4 18 12H0c0-8 10-12 18-12z"/></svg></div><span class="hand-s">M. Lee</span></div></td><td class="hand-s">14m ago</td><td><svg class="icon sm" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></td></tr>
+                <tr><td><span class="check"><span class="box"></span></span></td><td class="hand-s">Initech LLC</td><td class="hand-s">Pro</td><td class="hand-s">$1,200</td><td><span class="pill sm">Trial</span></td><td><div class="row" style="gap:6px"><div class="avatar sm"><svg viewBox="0 0 36 30"><path fill="currentColor" d="M18 0a8 8 0 110 16 8 8 0 010-16zm0 18c8 0 18 4 18 12H0c0-8 10-12 18-12z"/></svg></div><span class="hand-s">R. Patel</span></div></td><td class="hand-s">1h ago</td><td><svg class="icon sm" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></td></tr>
+                <tr><td><span class="check"><span class="box"></span></span></td><td class="hand-s">Soylent Co.</td><td class="hand-s">Starter</td><td class="hand-s">$120</td><td><span class="pill muted sm">Paused</span></td><td><div class="row" style="gap:6px"><div class="avatar sm"><svg viewBox="0 0 36 30"><path fill="currentColor" d="M18 0a8 8 0 110 16 8 8 0 010-16zm0 18c8 0 18 4 18 12H0c0-8 10-12 18-12z"/></svg></div><span class="hand-s">K. Ng</span></div></td><td class="hand-s">3d ago</td><td><svg class="icon sm" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></td></tr>
+                <tr><td><span class="check"><span class="box"></span></span></td><td class="hand-s">Umbrella Inc.</td><td class="hand-s">Enterprise</td><td class="hand-s">$6,400</td><td><span class="pill on sm">Active</span></td><td><div class="row" style="gap:6px"><div class="avatar sm"><svg viewBox="0 0 36 30"><path fill="currentColor" d="M18 0a8 8 0 110 16 8 8 0 010-16zm0 18c8 0 18 4 18 12H0c0-8 10-12 18-12z"/></svg></div><span class="hand-s">J. Cole</span></div></td><td class="hand-s">just now</td><td><svg class="icon sm" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></td></tr>
+              </tbody>
+            </table>
+            <div class="row" style="justify-content:space-between; margin-top: 12px">
+              <span class="hand-xs" style="color:var(--ink-2)">Showing 5 of 248</span>
+              <div class="btn-group">
+                <button>‹</button>
+                <button class="on">1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>›</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form with various input types -->
+          <div style="border:2px solid var(--line-soft); border-radius:6px; padding: 20px; display:grid; grid-template-columns: 220px 1fr; gap: 28px">
+            <div>
+              <div class="hand-m" style="font-weight:700">New customer</div>
+              <p class="hand-xs" style="color:var(--ink-2); margin-top: 6px">Add a customer to the pipeline. Fields marked * are required.</p>
+            </div>
+            <div class="stack" style="gap: 18px">
+              <div class="grid grid-2" style="gap: 16px">
+                <div class="field"><div class="field-label">First name *</div><div class="input"><input value="Jane"/></div></div>
+                <div class="field"><div class="field-label">Last name *</div><div class="input"><input value="Hopper"/></div></div>
+              </div>
+              <div class="field"><div class="field-label">Email *</div>
+                <div class="input"><svg class="icon sm" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M3 7l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg><input value="jane@umbrella.co"/></div>
+              </div>
+              <div class="grid grid-2" style="gap: 16px">
+                <div class="field"><div class="field-label">Plan</div>
+                  <div class="input focus" style="cursor:pointer"><span class="hand-s" style="flex:1">Pro</span><svg class="icon sm" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+                </div>
+                <div class="field"><div class="field-label">Renewal</div>
+                  <div class="input" style="cursor:pointer"><svg class="icon sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="hand-s" style="flex:1">12 / 04 / 2026</span></div>
+                </div>
+              </div>
+              <div class="field error"><div class="field-label">Website</div><div class="input"><input value="not-a-url"/></div><div class="field-error">Please enter a valid URL.</div></div>
+              <div class="field">
+                <div class="field-label">Account size</div>
+                <div class="row" style="gap:10px"><span class="hand-xs" style="color:var(--ink-2); width:24px">1</span><div class="slider-bar"></div><span class="hand-xs" style="color:var(--ink-2); width:32px">500+</span></div>
+              </div>
+              <div class="field">
+                <div class="field-label">Notes</div>
+                <div class="input" style="align-items:flex-start; min-height: 80px"><textarea style="flex:1; border:none; outline:none; background:transparent; font-family: var(--hand); font-size: 16px; resize: vertical; min-height: 60px" placeholder="Anything we should know…">Met at SaaSConf — interested in SSO add-on.</textarea></div>
+              </div>
+              <div class="field">
+                <div class="field-label">Industry</div>
+                <div class="row" style="gap: 16px">
+                  <span class="radio on"><span class="dot"></span> Tech</span>
+                  <span class="radio"><span class="dot"></span> Retail</span>
+                  <span class="radio"><span class="dot"></span> Finance</span>
+                  <span class="radio"><span class="dot"></span> Other</span>
+                </div>
+              </div>
+              <div class="field">
+                <div class="field-label">Add-ons</div>
+                <div class="row" style="gap: 16px">
+                  <span class="check on"><span class="box"></span> SSO</span>
+                  <span class="check on"><span class="box"></span> Audit log</span>
+                  <span class="check"><span class="box"></span> Custom domain</span>
+                  <span class="check"><span class="box"></span> Priority support</span>
+                </div>
+              </div>
+              <div class="row" style="justify-content: space-between; align-items:center; margin-top: 4px">
+                <div class="row" style="gap:10px"><span class="switch on"></span><span class="hand-s">Send welcome email</span></div>
+                <div class="row" style="gap: 10px">
+                  <button class="btn outline">Cancel</button>
+                  <button class="btn">Save customer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <span>Lo-fi Wireframe Design System · v1.0</span>
+  <span>Designed for thinking, not shipping.</span>
+</footer>
+
+<!-- Tweaks panel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<div id="tweaks-root"></div>
+<script type="text/babel">
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "primary": "#0066ff",
+    "handFont": "Kalam",
+    "tintBg": true,
+    "wobble": true
+  }/*EDITMODE-END*/;
+
+  function App() {
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+    React.useEffect(() => {
+      document.documentElement.style.setProperty('--primary', t.primary);
+      document.documentElement.style.setProperty('--primary-2', t.primary);
+      document.documentElement.style.setProperty('--hand', `'${t.handFont}', cursive`);
+      document.querySelectorAll('section.sys.tint, section.sys.tint-2').forEach(el => {
+        el.style.background = t.tintBg ? '' : '#fff';
+      });
+      if (t.wobble) document.body.classList.add('wobble');
+      else document.body.classList.remove('wobble');
+    }, [t]);
+
+    return (
+      <TweaksPanel title="Tweaks">
+        <TweakSection title="Accent">
+          <TweakColor
+            label="Primary"
+            value={t.primary}
+            onChange={(v) => setTweak('primary', v)}
+            options={['#0066ff', '#111111', '#7f39fb', '#e3506f', '#1f8a5b']}
+          />
+        </TweakSection>
+        <TweakSection title="Type">
+          <TweakRadio
+            label="Hand font"
+            value={t.handFont}
+            onChange={(v) => setTweak('handFont', v)}
+            options={[
+              { value: 'Kalam', label: 'Kalam' },
+              { value: 'Caveat', label: 'Caveat' },
+              { value: 'Patrick Hand', label: 'Patrick' },
+              { value: 'Gloria Hallelujah', label: 'Gloria' },
+            ]}
+          />
+        </TweakSection>
+        <TweakSection title="Surface">
+          <TweakToggle
+            label="Tinted sections"
+            value={t.tintBg}
+            onChange={(v) => setTweak('tintBg', v)}
+          />
+          <TweakToggle
+            label="Sketchy wobble"
+            value={t.wobble}
+            onChange={(v) => setTweak('wobble', v)}
+          />
+        </TweakSection>
+      </TweaksPanel>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<App />);
+</script>
+
+</body>
+</html>
