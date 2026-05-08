@@ -73,6 +73,12 @@ The Tweaks panel is the intended customization surface for design exploration:
 - **Tinted sections** — toggles the soft blue tint on the alternating section backgrounds.
 - **Sketchy wobble** — adds a subtle rotation to titles, buttons, inputs, devices, and tiles for a more hand-drawn feel.
 
+> **Note** — the panel is hidden by default. It implements the `claude.ai/design` host protocol, so it stays dormant until the parent window posts an `__activate_edit_mode` message. To open it manually when running outside that host, paste this into the browser console:
+>
+> ```js
+> window.postMessage({ type: '__activate_edit_mode' }, '*')
+> ```
+
 For deeper customization, edit `tokens.css` directly — it's the single source of truth. Every component reads through the semantic roles (`--color-fg`, `--color-bg`, `--color-border`, `--color-primary`, etc.) so renaming a primitive flows through automatically.
 
 ## Lo-fi rules
