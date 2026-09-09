@@ -1,0 +1,554 @@
+<title>NR Design System Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --bg-2: #F4F4F6;
+    --bg-3: #ECECEE;
+    --ink: #1F1F21;
+    --ink-2: #5F5F60;
+    --ink-3: #9B9B9D;
+    --line: #DEDEE0;
+    --line-2: #BBBBBD;
+    --primary: #404041;
+    --attn: #FF8800;
+    --ok: #00A542;
+    --bad: #F44139;
+    --canvas: #FFFFFF;
+    --canvas-ink: #1F1F21;
+    --sans: 'Nunito Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+    --measure: 68ch;
+    --wide: 920px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1F1F21; --bg-2: #2A2A2C; --bg-3: #333336;
+      --ink: #F4F4F6; --ink-2: #BBBBBD; --ink-3: #9B9B9D;
+      --line: #404041; --line-2: #5F5F60;
+      --primary: #DEDEE0; --attn: #FFA424; --ok: #0FC066; --bad: #EF5252;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1F1F21; --bg-2: #2A2A2C; --bg-3: #333336;
+    --ink: #F4F4F6; --ink-2: #BBBBBD; --ink-3: #9B9B9D;
+    --line: #404041; --line-2: #5F5F60;
+    --primary: #DEDEE0; --attn: #FFA424; --ok: #0FC066; --bad: #EF5252;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--ink); text-decoration-color: var(--line-2); text-underline-offset: 3px; }
+  a:hover { text-decoration-color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--attn); outline-offset: 2px; }
+
+  .page {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 48px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 24px 96px;
+  }
+  @media (min-width: 1100px) {
+    .page { grid-template-columns: 220px minmax(0, 1fr); padding: 56px 40px 120px; }
+    .rail { position: sticky; top: 32px; align-self: start; }
+  }
+
+  /* ── Contents rail ── */
+  .rail { font-size: 14px; line-height: 1.4; }
+  .rail .eyebrow { margin-bottom: 12px; }
+  .rail ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .rail li a { display: grid; grid-template-columns: 22px 1fr; gap: 6px; color: var(--ink-2); text-decoration: none; padding: 4px 0; border-left: 2px solid transparent; }
+  .rail li a:hover { color: var(--ink); }
+  .rail li a .n { font-family: var(--mono); font-size: 12px; color: var(--ink-3); padding-top: 2px; }
+  @media (max-width: 1099px) {
+    .rail { margin-bottom: 40px; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .rail ol { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 4px 24px; }
+  }
+
+  /* ── Type ── */
+  .eyebrow { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; }
+  h1 { font-size: 48px; line-height: 1.15; font-weight: 300; letter-spacing: -0.01em; margin: 12px 0 16px; text-wrap: balance; }
+  h2 { font-size: 34px; line-height: 1.2; font-weight: 300; margin: 0 0 20px; text-wrap: balance; }
+  h3 { font-size: 24px; line-height: 1.3; font-weight: 600; margin: 40px 0 12px; text-wrap: balance; }
+  h4 { font-size: 20px; line-height: 1.35; font-weight: 700; margin: 28px 0 8px; }
+  p, ul, ol { max-width: var(--measure); }
+  p { margin: 0 0 16px; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  li > p { margin-bottom: 8px; }
+  strong { font-weight: 700; }
+  em { font-style: italic; }
+  .dek { font-size: 20px; line-height: 1.45; color: var(--ink-2); font-weight: 400; max-width: var(--measure); margin: 0 0 24px; }
+  .meta { font-family: var(--mono); font-size: 12px; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 6px 20px; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 56px; }
+  .meta span b { color: var(--ink); font-weight: 500; }
+  code, .mono { font-family: var(--mono); font-size: 0.875em; }
+  code { background: var(--bg-2); padding: 1px 5px; border-radius: 3px; color: var(--ink); }
+  .num { font-variant-numeric: tabular-nums; }
+
+  section { margin: 0 0 72px; scroll-margin-top: 24px; }
+  .section-head { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: baseline; margin-bottom: 20px; border-top: 1px solid var(--line); padding-top: 24px; }
+  .section-head .n { font-family: var(--mono); font-size: 14px; color: var(--ink-3); padding-top: 12px; }
+  .section-head h2 { margin: 0; }
+
+  /* ── Score ── */
+  .score { display: grid; grid-template-columns: 1fr; gap: 24px 40px; margin: 32px 0 8px; max-width: var(--wide); }
+  @media (min-width: 720px) { .score { grid-template-columns: 200px 1fr; align-items: start; } }
+  .score-total { border-left: 3px solid var(--primary); padding-left: 16px; }
+  .score-total .big { font-size: 48px; line-height: 1; font-weight: 300; font-variant-numeric: tabular-nums; }
+  .score-total .big small { font-size: 20px; color: var(--ink-2); }
+  .score-total .lbl { color: var(--ink-2); font-size: 14px; margin-top: 6px; }
+  .dims { display: grid; gap: 14px; }
+  .dim { display: grid; grid-template-columns: 1fr; gap: 6px; }
+  @media (min-width: 720px) { .dim { grid-template-columns: 190px 1fr; gap: 0 16px; align-items: center; } .dim .why { grid-column: 2; } }
+  .dim .name { font-weight: 600; font-size: 14px; }
+  .dim .bar { display: grid; grid-template-columns: 1fr 56px; gap: 12px; align-items: center; }
+  .dim .track { height: 8px; background: var(--bg-3); border-radius: 2px; overflow: hidden; }
+  .dim .fill { height: 100%; background: var(--primary); }
+  .dim .val { font-family: var(--mono); font-size: 13px; color: var(--ink-2); text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .dim .why { font-size: 14px; color: var(--ink-2); }
+
+  /* ── Exhibits ── */
+  .exhibit { max-width: var(--wide); margin: 24px 0 32px; }
+  .exhibit .cap { font-size: 13px; color: var(--ink-2); margin-top: 10px; line-height: 1.45; }
+  .exhibit .cap b { color: var(--ink); font-weight: 600; }
+  .swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .swatch .chip { height: 88px; border-radius: 4px; border: 1px solid var(--line); }
+  .swatch .lbl { font-size: 13px; margin-top: 8px; font-weight: 600; }
+  .swatch .hex { font-family: var(--mono); font-size: 12px; color: var(--ink-2); }
+  .swatch .src { font-size: 12px; color: var(--ink-3); }
+  .swatches.six { grid-template-columns: repeat(6, 1fr); }
+  .swatches.six .chip { height: 56px; }
+  @media (max-width: 640px) { .swatches.six { grid-template-columns: repeat(3, 1fr); } }
+
+  .canvas { background: var(--canvas); color: var(--canvas-ink); border: 1px solid var(--line); border-radius: 4px; padding: 20px; }
+  .canvas .note { font-size: 12px; color: #77777A; margin-bottom: 14px; font-family: var(--mono); }
+  .chiprows { display: grid; gap: 12px; }
+  .chiprow { display: grid; grid-template-columns: 70px 1fr 1fr; gap: 16px; align-items: center; }
+  @media (max-width: 560px) { .chiprow { grid-template-columns: 1fr; gap: 6px; } }
+  .chiprow .who { font-family: var(--mono); font-size: 12px; color: #77777A; }
+  .chiprow .who.h { color: #1F1F21; font-weight: 500; }
+  .stchip {
+    display: inline-flex; align-items: center; height: 26px; padding: 4px 8px; border-radius: 4px; border: 1px solid;
+    font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; line-height: 14px; text-transform: uppercase; white-space: nowrap;
+  }
+  .verdicts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; font-size: 13px; }
+  .verdicts div { padding: 10px 12px; background: var(--bg-2); border-radius: 4px; }
+  .verdicts b { display: block; font-family: var(--mono); font-size: 12px; font-weight: 500; margin-bottom: 2px; }
+  .ok { color: var(--ok); } .bad { color: var(--bad); }
+
+  .alias { display: grid; gap: 10px; font-family: var(--mono); font-size: 13px; }
+  .alias .row { display: grid; grid-template-columns: 1fr auto 1fr auto; gap: 10px; align-items: center; padding: 10px 14px; background: var(--bg-2); border-radius: 4px; }
+  @media (max-width: 640px) { .alias .row { grid-template-columns: 1fr; } }
+  .alias .arrow { color: var(--ink-3); }
+  .alias .dot { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: -2px; margin-right: 6px; border: 1px solid rgba(0,0,0,.12); }
+  .alias .tag { font-size: 11px; color: var(--ink-2); }
+
+  /* ── Tables ── */
+  .tablewrap { overflow-x: auto; max-width: var(--wide); margin: 16px 0 24px; border: 1px solid var(--line); border-radius: 4px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; line-height: 1.4; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; background: var(--bg-2); white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+  td.mono, td code { font-family: var(--mono); font-size: 13px; white-space: nowrap; }
+  td .dot { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -2px; margin-right: 7px; border: 1px solid rgba(0,0,0,.15); }
+  td.rec { background: var(--bg-2); font-weight: 600; }
+  .q { color: var(--attn); font-weight: 600; }
+  .yes { color: var(--ok); font-weight: 700; }
+  .no { color: var(--bad); font-weight: 700; }
+
+  /* ── Tickets ── */
+  .ticket { max-width: var(--wide); padding: 20px 0 20px 20px; border-left: 2px solid var(--line-2); margin: 0 0 24px; }
+  .ticket h4 { margin: 0 0 12px; }
+  .ticket dl { display: grid; grid-template-columns: 96px 1fr; gap: 8px 16px; margin: 0; font-size: 15px; }
+  @media (max-width: 560px) { .ticket dl { grid-template-columns: 1fr; gap: 2px 0; } .ticket dd { margin-bottom: 10px; } }
+  .ticket dt { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; padding-top: 3px; }
+  .ticket dd { margin: 0; max-width: var(--measure); }
+
+  /* ── Steps / groups ── */
+  .steps { counter-reset: step; list-style: none; padding: 0; max-width: var(--measure); }
+  .steps li { counter-increment: step; display: grid; grid-template-columns: 32px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); margin: 0; }
+  .steps li::before { content: counter(step); font-family: var(--mono); font-size: 13px; color: var(--ink-3); padding-top: 2px; }
+  .done { background: var(--bg-2); border-radius: 4px; padding: 14px 16px; max-width: var(--measure); font-size: 15px; margin-top: 16px; }
+  .done b { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); display: block; margin-bottom: 4px; }
+  .groups { list-style: none; padding: 0; max-width: var(--wide); display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 24px; }
+  @media (max-width: 640px) { .groups { grid-template-columns: 1fr; } }
+  .groups li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); margin: 0; font-size: 15px; }
+  .groups li .n { font-family: var(--mono); font-size: 12px; color: var(--ink-3); padding-top: 3px; }
+  .groups li b { font-weight: 600; }
+  .groups li span { color: var(--ink-2); }
+
+  dl.gloss { max-width: var(--measure); display: grid; grid-template-columns: 1fr; gap: 12px; margin: 0; }
+  dl.gloss dt { font-weight: 700; }
+  dl.gloss dd { margin: 2px 0 0; color: var(--ink-2); }
+
+  .callout { max-width: var(--measure); border-left: 3px solid var(--attn); padding: 4px 0 4px 16px; margin: 20px 0 24px; }
+  .callout p:last-child { margin-bottom: 0; }
+  footer { max-width: var(--wide); border-top: 1px solid var(--line); padding-top: 20px; font-size: 13px; color: var(--ink-2); }
+  footer p { margin-bottom: 8px; }
+</style>
+
+<div class="page">
+  <nav class="rail" aria-label="Contents">
+    <div class="eyebrow">Contents</div>
+    <ol>
+      <li><a href="#verdict"><span class="n">—</span><span>Verdict &amp; score</span></a></li>
+      <li><a href="#see"><span class="n">1</span><span>What your users see</span></a></li>
+      <li><a href="#why"><span class="n">2</span><span>Why it happened</span></a></li>
+      <li><a href="#decide"><span class="n">3</span><span>Decisions only you can make</span></a></li>
+      <li><a href="#figma"><span class="n">4</span><span>Fix it yourself in Figma</span></a></li>
+      <li><a href="#tickets"><span class="n">5</span><span>What to ask engineering for</span></a></li>
+      <li><a href="#storybook"><span class="n">6</span><span>Storybook as your tool</span></a></li>
+      <li><a href="#sequence"><span class="n">7</span><span>Sequence</span></a></li>
+      <li><a href="#delete"><span class="n">8</span><span>Things to delete</span></a></li>
+      <li><a href="#glossary"><span class="n">—</span><span>Glossary</span></a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <header>
+      <div class="eyebrow">Design audit · 9 September 2026</div>
+      <h1>NR Design System Audit</h1>
+      <p class="dek">Figma “NR MUI v6.1” against the NR Portal frontend and its Storybook. Written for the designer who has to decide, not the engineer who has to grep.</p>
+      <div class="meta">
+        <span>Author <b>Casper Eisma</b></span>
+        <span>Code <b>nr-ui-tools · staging @ edd73c2</b></span>
+        <span>Figma <b>NR MUI v6.1 · kit 6.1.0</b></span>
+        <span>Engineering detail <b>AUDIT-technical.md</b></span>
+      </div>
+    </header>
+
+    <section id="verdict">
+      <h2>The one-paragraph verdict</h2>
+      <p>You have three design systems that each believe they are the real one: the Figma library, the code that ships, and the prototype you design in. They agree on the boring parts (font, corner radius, spacing unit, white background) and disagree on every part anyone ever customised: all six semantic colours, two heading sizes, a heading weight, and the status chip. Nobody noticed because the disagreements are between near-identical greys and oranges. That is not reassuring; it is the exact condition under which drift compounds.</p>
+
+      <div class="score">
+        <div class="score-total">
+          <div class="big num">38<small> / 100</small></div>
+          <div class="lbl">Fidelity score</div>
+        </div>
+        <div class="dims">
+          <div class="dim">
+            <div class="name">Design → build fidelity</div>
+            <div class="bar"><div class="track"><div class="fill" style="width:30%"></div></div><div class="val">3 / 10</div></div>
+            <div class="why">What you design is not what ships. Six of six semantic colours differ.</div>
+          </div>
+          <div class="dim">
+            <div class="name">Designer efficiency</div>
+            <div class="bar"><div class="track"><div class="fill" style="width:50%"></div></div><div class="val">5 / 10</div></div>
+            <div class="why">Components exist in both tools, but Storybook is organised by code folder, not design intent, and the token page shows paint chips rather than a palette.</div>
+          </div>
+          <div class="dim">
+            <div class="name">Single source of truth</div>
+            <div class="bar"><div class="track"><div class="fill" style="width:20%"></div></div><div class="val">2 / 10</div></div>
+            <div class="why">Three sources, no export between them, and the Figma library contradicts itself internally.</div>
+          </div>
+          <div class="dim">
+            <div class="name">Foundations</div>
+            <div class="bar"><div class="track"><div class="fill" style="width:80%"></div></div><div class="val">8 / 10</div></div>
+            <div class="why">Nunito Sans, 8-pt spacing, radius 4, elevation styles: all correct and matching. Build on this.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="see">
+      <div class="section-head"><span class="n">1</span><h2>What your users see today</h2></div>
+      <p>Visible consequences, not code-quality abstractions.</p>
+
+      <h4>The primary button is three different greys</h4>
+      <div class="exhibit">
+        <div class="swatches">
+          <div class="swatch"><div class="chip" style="background:#424242"></div><div class="lbl">Figma</div><div class="hex">#424242</div><div class="src">Material grey 800, via a miswired alias</div></div>
+          <div class="swatch"><div class="chip" style="background:#000000"></div><div class="lbl">Live app</div><div class="hex">#000000</div><div class="src">Typed into the theme</div></div>
+          <div class="swatch"><div class="chip" style="background:#404041"></div><div class="lbl">Your prototypes</div><div class="hex">#404041</div><div class="src">FUGA Grey 800</div></div>
+        </div>
+        <div class="cap">A designer, an engineer and a user are each looking at a different button and calling it the same thing.</div>
+      </div>
+
+      <h4>Warning is three different oranges</h4>
+      <div class="exhibit">
+        <div class="swatches">
+          <div class="swatch"><div class="chip" style="background:#FB8C00"></div><div class="lbl">Figma</div><div class="hex">#FB8C00</div><div class="src">Material orange 600</div></div>
+          <div class="swatch"><div class="chip" style="background:#ED6C02"></div><div class="lbl">Live app</div><div class="hex">#ED6C02</div><div class="src">MUI’s default warning</div></div>
+          <div class="swatch"><div class="chip" style="background:#FF8800"></div><div class="lbl">Your prototypes</div><div class="hex">#FF8800</div><div class="src">FUGA Orange 600</div></div>
+        </div>
+        <div class="cap">The “requires sync” indicator you designed for the Curve work is not the orange the app will render.</div>
+      </div>
+
+      <h4>Headings render heavier in the app than in Figma or Storybook</h4>
+      <p><code>h1</code> and <code>h2</code> are designed in Nunito Sans Light (300). The app never loads the Light weight, so the browser fakes one. Storybook <em>does</em> load it, which is why the mismatch is invisible during review and visible in production.</p>
+
+      <h4>Two heading sizes are simply different numbers</h4>
+      <p><code>h2</code> is 60 px in Figma and 64 px in the app; <code>h4</code> is 34 px vs 36 px. Any layout you tune to the Figma text style will be 2–4 px off when built.</p>
+
+      <h4>The status chip is built three different ways</h4>
+      <div class="exhibit">
+        <div class="canvas">
+          <div class="note">rendered on the app’s white background · both themes</div>
+          <div class="chiprows">
+            <div class="chiprow"><span class="who"></span><span class="who h">Figma library</span><span class="who h">Live app</span></div>
+            <div class="chiprow"><span class="who">Red</span>
+              <span><span class="stchip" style="background:#FFEBEE;border-color:rgba(244,65,57,.5);color:#D32F2F">Export failed</span></span>
+              <span><span class="stchip" style="background:#FFEBEE;border-color:#EE9A9B;color:#B7191F">Export failed</span></span></div>
+            <div class="chiprow"><span class="who">Green</span>
+              <span><span class="stchip" style="background:#E3F6E9;border-color:rgba(0,165,66,.5);color:#388E3C">Registered</span></span>
+              <span><span class="stchip" style="background:#E3F6E9;border-color:#56CC82;color:#006218">Registered</span></span></div>
+            <div class="chiprow"><span class="who">Blue</span>
+              <span><span class="stchip" style="background:#E5F6FC;border-color:rgba(69,162,221,.5);color:#0288D1">Submitted</span></span>
+              <span><span class="stchip" style="background:#E5F6FC;border-color:#74C7ED;color:#295E95">Submitted</span></span></div>
+            <div class="chiprow"><span class="who">Orange</span>
+              <span><span class="stchip" style="background:#FFF3E0;border-color:rgba(255,136,0,.5);color:#F57C00">To be registered</span></span>
+              <span><span class="stchip" style="background:#FFF3E0;border-color:#FFB44C;color:#EA4B04">To be registered</span></span></div>
+            <div class="chiprow"><span class="who">Grey</span>
+              <span><span class="stchip" style="background:rgba(0,0,0,.12);border-color:rgba(64,64,65,.5);color:rgba(0,0,0,.6)">Unavailable</span></span>
+              <span><span class="stchip" style="background:rgba(0,0,0,.12);border-color:rgba(0,0,0,.54);color:rgba(0,0,0,.6)">Unavailable</span></span></div>
+          </div>
+        </div>
+        <div class="verdicts">
+          <div><b>Background</b><span class="ok">5 of 5 match.</span> Both sides hand-typed the FUGA 50-tints.</div>
+          <div><b>Text</b><span class="bad">1 of 5 match.</span> Figma binds to Material “dark”; code uses FUGA 900s.</div>
+          <div><b>Border</b><span class="bad">0 of 5 match.</span> Figma: main at 50 % opacity. Code: solid 200-tint.</div>
+        </div>
+        <div class="cap">Same chip, same 26 px height, same radius 4. Every status chip in the app is a slightly different chip from the one in your library.</div>
+      </div>
+
+      <h4>Figma promises a dark mode the product does not have</h4>
+      <p>The <code>palette</code> collection has a full Dark mode. Nothing in the app can render it. Anyone designing in Dark is designing for a product that does not exist.</p>
+    </section>
+
+    <section id="why">
+      <div class="section-head"><span class="n">2</span><h2>Why this happened — the one mechanism to understand</h2></div>
+      <p>The Figma library is the official Material UI kit with FUGA colours added beside the Material ones. Both palettes ended up in the file: <code>material/colors</code> (spelled <code>grey/800</code>) and <code>fuga/colors</code> (spelled <code>Grey/800</code>). Whoever customised the kit re-typed the hover, focus and border tokens with FUGA values by hand, but left the <em>main</em> colour tokens pointing at the Material palette — almost certainly because the two <code>grey/800</code>s are indistinguishable in a picker.</p>
+
+      <div class="exhibit">
+        <div class="alias">
+          <div class="row">
+            <span>error/main</span><span class="arrow">→ aliases</span><span>material/colors · red/500</span><span><span class="dot" style="background:#F44336"></span>#F44336</span>
+          </div>
+          <div class="row">
+            <span>error/_states/outlinedBorder</span><span class="arrow">= typed</span><span>FUGA Red 500 at 50 %</span><span><span class="dot" style="background:#F44139"></span>#F44139</span>
+          </div>
+          <div class="row">
+            <span>primary/main</span><span class="arrow">→ aliases</span><span>material/colors · grey/800</span><span><span class="dot" style="background:#424242"></span>#424242</span>
+          </div>
+          <div class="row">
+            <span>primary/_states/hover</span><span class="arrow">= typed</span><span>FUGA Grey 800 at 4 %</span><span><span class="dot" style="background:#404041"></span>#404041</span>
+          </div>
+        </div>
+        <div class="cap">Inside your own file, a button’s fill and its border come from different brands. The library disagrees with itself before code even enters the picture.</div>
+      </div>
+
+      <p>Everything in this audit follows from that one miswired alias. Fix it and most of the colour drift collapses.</p>
+    </section>
+
+    <section id="decide">
+      <div class="section-head"><span class="n">3</span><h2>Decisions only you can make</h2></div>
+      <p>Nothing downstream can start until these are settled. Each is a design call, not an engineering one.</p>
+
+      <h3>3.1 The six semantic colours</h3>
+      <p>Pick one value for each role. The recommendation is the FUGA column: it is what the hover and border states already use, what the chip backgrounds already use, and what your prototypes already use. Material is the accident.</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Role</th><th>Figma today</th><th>Live app today</th><th>Prototype today</th><th>Recommend</th></tr></thead>
+          <tbody>
+            <tr><td><b>Primary</b></td><td class="mono"><span class="dot" style="background:#424242"></span>#424242</td><td class="mono"><span class="dot" style="background:#000000"></span>#000000</td><td class="mono"><span class="dot" style="background:#404041"></span>#404041</td><td class="rec mono"><span class="dot" style="background:#404041"></span>#404041 <span style="font-weight:400;color:var(--ink-2)">FUGA Grey 800</span></td></tr>
+            <tr><td><b>Secondary</b></td><td class="mono"><span class="dot" style="background:#9C27B0"></span>#9C27B0</td><td>white on grey</td><td>—</td><td class="rec"><span class="q">Decide whether NR has a secondary.</span> Nothing uses it consistently today.</td></tr>
+            <tr><td><b>Error</b></td><td class="mono"><span class="dot" style="background:#F44336"></span>#F44336</td><td class="mono"><span class="dot" style="background:#F44139"></span>#F44139</td><td class="mono"><span class="dot" style="background:#F44139"></span>#F44139</td><td class="rec mono"><span class="dot" style="background:#F44139"></span>#F44139 <span style="font-weight:400;color:var(--ink-2)">FUGA Red 500</span></td></tr>
+            <tr><td><b>Warning</b></td><td class="mono"><span class="dot" style="background:#FB8C00"></span>#FB8C00</td><td class="mono"><span class="dot" style="background:#ED6C02"></span>#ED6C02</td><td class="mono"><span class="dot" style="background:#FF8800"></span>#FF8800</td><td class="rec mono"><span class="dot" style="background:#FF8800"></span>#FF8800 <span style="font-weight:400;color:var(--ink-2)">FUGA Orange 600</span></td></tr>
+            <tr><td><b>Info</b></td><td class="mono"><span class="dot" style="background:#039BE5"></span>#039BE5</td><td class="mono"><span class="dot" style="background:#45A2DD"></span>#45A2DD</td><td class="mono"><span class="dot" style="background:#45A2DD"></span>#45A2DD</td><td class="rec mono"><span class="dot" style="background:#45A2DD"></span>#45A2DD <span style="font-weight:400;color:var(--ink-2)">FUGA Blue 600</span></td></tr>
+            <tr><td><b>Success</b></td><td class="mono"><span class="dot" style="background:#43A047"></span>#43A047</td><td class="mono"><span class="dot" style="background:#00A542"></span>#00A542</td><td class="mono"><span class="dot" style="background:#00A542"></span>#00A542</td><td class="rec mono"><span class="dot" style="background:#00A542"></span>#00A542 <span style="font-weight:400;color:var(--ink-2)">FUGA Green 600</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Also decide: is <strong>text</strong> <code>#000000</code> at 87 % (Figma, Material convention) or solid <code>#1F1F21</code> (app, prototype)? They look the same on white and differ on any tint. Recommend solid FUGA Grey 900: the app already uses it, and opacity-based text is harder to reason about on coloured surfaces.</p>
+
+      <h3>3.2 The status vocabulary</h3>
+      <p>This is the one component that is genuinely <em>NR’s</em>, and today it is a colour named after a colour (“redChip”, “Color: Red”). Define it once as meaning → colour role. The statuses that exist in the product:</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Status</th><th>Meaning</th><th>Colour today</th><th>Question for you</th></tr></thead>
+          <tbody>
+            <tr><td><b>Registered</b></td><td>Claim accepted by CMO</td><td>Green</td><td>—</td></tr>
+            <tr><td><b>Exclusive licence deal</b></td><td>Registered under an exclusive deal</td><td>Green</td><td class="q">Same green as Registered. Should it be distinguishable?</td></tr>
+            <tr><td><b>Submitted / Exported</b></td><td>Sent to CMO, awaiting</td><td>Blue</td><td class="q">Two words for one state?</td></tr>
+            <tr><td><b>To be registered</b></td><td>Not yet sent</td><td>Orange</td><td>—</td></tr>
+            <tr><td><b>Re-register</b></td><td>Needs resubmission</td><td>Orange</td><td class="q">Same orange as “To be registered”. Intentional?</td></tr>
+            <tr><td><b>Unavailable / Not applicable</b></td><td>Cannot be claimed</td><td>Grey</td><td>—</td></tr>
+            <tr><td><b>Relinquished</b></td><td>Rights given up</td><td>Purple</td><td class="q">Missing from Figma.</td></tr>
+            <tr><td><b>Export in progress / completed / failed</b></td><td>Bulk-export job states</td><td>Blue / Green / Red</td><td>Only place Red is used.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Figma has five colours (Red, Green, Orange, Blue, Grey). The product needs six: add Purple. Code also defines a Yellow chip that nothing uses. Delete it.</p>
+      <p>Missing from <em>both</em> Figma and code, present only in your prototype: Curve sync state (synced / requires sync / not synced), advance recoupment (recouped / in recoupment), sliding-scale position, deal-ending flag. Decide whether these join the status vocabulary or stay indicator-only.</p>
+
+      <h3>3.3 Dark mode: in or out?</h3>
+      <p>If out, delete the Dark mode from the Figma <code>palette</code> collection so it stops implying a promise. If in, it is a product decision with real engineering cost and should go through a Brief.</p>
+
+      <h3>3.4 Brand direction — ask Dean before building tokens</h3>
+      <p>The Figma file contains a third palette, <code>DMP/colors</code>: Downtown Music Publishing’s brand. It is bound to nothing.</p>
+      <div class="exhibit">
+        <div class="swatches six">
+          <div class="swatch"><div class="chip" style="background:#817A60"></div><div class="lbl">Parchment</div><div class="hex">#817A60</div></div>
+          <div class="swatch"><div class="chip" style="background:#707070"></div><div class="lbl">Black</div><div class="hex">#707070</div></div>
+          <div class="swatch"><div class="chip" style="background:#D6410A"></div><div class="lbl">Burnt Orange</div><div class="hex">#D6410A</div></div>
+          <div class="swatch"><div class="chip" style="background:#578A70"></div><div class="lbl">Sage Green</div><div class="hex">#578A70</div></div>
+          <div class="swatch"><div class="chip" style="background:#3370AD"></div><div class="lbl">Steel Blue</div><div class="hex">#3370AD</div></div>
+          <div class="swatch"><div class="chip" style="background:#9D7444"></div><div class="lbl">Warm Tan</div><div class="hex">#9D7444</div></div>
+        </div>
+        <div class="cap">The 500 step of each DMP ramp. Sixty variables in the library, zero components using them.</div>
+      </div>
+      <div class="callout">
+        <p>With the UMG/VMG integration underway, this is worth one conversation: is NR staying on FUGA’s visual identity, moving to DMP’s, or waiting for VMG’s? The answer does not change the plan — a semantic layer makes a palette swap cheap — but it changes which palette you point it at first, and whether you delete <code>DMP/colors</code> or <code>fuga/colors</code>.</p>
+      </div>
+
+      <h3>3.5 How Storybook should be organised</h3>
+      <p>Storybook is your living component catalogue, but today it is arranged by the engineer’s folder structure: 19 groups including both “Chips” and “Chips &amp; Status”, both “Feedback” and “Notifications”, and five overlapping groups for inputs. This is an information-architecture task you own. A proposal to react to:</p>
+      <ol class="groups">
+        <li><span class="n">1</span><span><b>Foundations</b> <span>— colour roles, typography, spacing, elevation, the status vocabulary</span></span></li>
+        <li><span class="n">2</span><span><b>Actions</b> <span>— buttons, dropdown buttons, bulk actions</span></span></li>
+        <li><span class="n">3</span><span><b>Inputs &amp; forms</b> <span>— text fields, selects, lookups, search, date</span></span></li>
+        <li><span class="n">4</span><span><b>Filters</b> <span>— filter chips, filter containers</span></span></li>
+        <li><span class="n">5</span><span><b>Data display</b> <span>— tables, event rows, charts, status chips</span></span></li>
+        <li><span class="n">6</span><span><b>Feedback</b> <span>— alerts, dialogs, notifications, loading</span></span></li>
+        <li><span class="n">7</span><span><b>Navigation &amp; layout</b> <span>— header, breadcrumbs, page templates</span></span></li>
+        <li><span class="n">8</span><span><b>Domain</b> <span>— asset metadata editing, client sections</span></span></li>
+      </ol>
+      <p>Eight groups, Foundations first, one home per component.</p>
+    </section>
+
+    <section id="figma">
+      <div class="section-head"><span class="n">4</span><h2>What you can fix yourself, in Figma, this week</h2></div>
+      <p>All inside <code>NR MUI v6.1</code>. None of it needs engineering. Publishing the library afterwards updates every screen that uses it.</p>
+      <ol class="steps">
+        <li><span><b>Re-point the six <code>main</code> tokens</b> (<code>primary</code>, <code>secondary</code>, <code>error</code>, <code>warning</code>, <code>info</code>, <code>success</code>, plus their <code>dark</code> and <code>light</code> variants) from <code>material/colors</code> to the matching <code>fuga/colors</code> ramp, in both Light and Dark modes. Use the values from 3.1.</span></li>
+        <li><span><b>Regenerate the <code>_states</code> tokens</b> (hover 4 %, selected 8 %, focus 12 %, focusVisible 30 %, outlinedBorder 50 %) from the new mains so they stop being hand-typed literals. The Dark-mode ones currently use Material values; fix those too.</span></li>
+        <li><span><b>Bind the <code>Status</code> chip backgrounds.</b> On all 25 variants the background is a typed hex. Bind each to the matching <code>{role}/light</code> or a new <code>{role}/_states/background</code> token. Add a <b>Purple</b> colour variant for Relinquished.</span></li>
+        <li><span><b>Rename the FUGA ramps to match the Material convention</b> (<code>Grey/800</code> → <code>grey/800</code>, <code>Fuga-Blue</code> → <code>fugaBlue</code>, <code>naxos-blue</code> → <code>naxosBlue</code>, <code>Base/White</code> → <code>common/white</code>). Consistent casing is what stops the wrong alias being picked next time.</span></li>
+        <li><span><b>Delete <code>material/colors</code></b> once nothing aliases it. 252 variables that exist only to be picked by mistake.</span></li>
+        <li><span><b>Tidy the small things:</b> fix the typo <code>knowFillDisabled</code> → <code>knobFillDisabled</code>; set <code>breakpoints/xs</code> to 0 (MUI’s default; 444 is a frame width); rename <code>_fontSize/0,625rem</code> style names to use a dot.</span></li>
+        <li><span><b>Scope the variables.</b> Most are <code>ALL_SCOPES</code>, so every colour appears in every picker. The kit’s own <code>text/*</code> tokens show the pattern: text colours scoped to text fill, surface colours to frame fill, border colours to stroke. This is the single biggest quality-of-life improvement for anyone designing in the file.</span></li>
+      </ol>
+      <div class="done"><b>Done when</b>Pick any component in the library, inspect any colour, and it resolves through <code>palette/*</code> to <code>fuga/colors/*</code>. No literal hex anywhere except inside <code>fuga/colors</code>.</div>
+    </section>
+
+    <section id="tickets">
+      <div class="section-head"><span class="n">5</span><h2>What to ask engineering for</h2></div>
+      <p>Each of these is one ticket, in the order they should happen. Phrased so Hlib or Vitaliy can pick it up without this document.</p>
+
+      <div class="ticket">
+        <h4>Ticket 1 — Load the Light weight, fix two heading sizes</h4>
+        <dl>
+          <dt>Why</dt><dd>h1/h2 render differently in the app than in Figma and Storybook. h2 and h4 are 4 px and 2 px off.</dd>
+          <dt>Ask</dt><dd>Add weight 300 to the Nunito Sans import in <code>index.html</code> (or drop 300 from h1/h2 if we agree they should be Regular); set h2 to 60 px and h4 to 34 px to match the Figma text styles.</dd>
+          <dt>Done when</dt><dd>Storybook and the app render every heading identically.</dd>
+        </dl>
+      </div>
+      <div class="ticket">
+        <h4>Ticket 2 — One status chip</h4>
+        <dl>
+          <dt>Why</dt><dd>The same status is defined five separate times in code with different colours, plus a sixth “solid” variant in the theme. Every screen renders a slightly different chip.</dd>
+          <dt>Ask</dt><dd>One <code>&lt;StatusChip status="…"&gt;</code> component driven by a single status → colour-role map matching 3.2; retire the four overlapping maps and the <code>statusSummary</code> theme entry; add Purple; delete the unused Yellow.</dd>
+          <dt>Done when</dt><dd>One component, one map, and its Storybook story shows every status in 3.2.</dd>
+        </dl>
+      </div>
+      <div class="ticket">
+        <h4>Ticket 3 — A token file the theme is generated from</h4>
+        <dl>
+          <dt>Why</dt><dd>Today there is no place where “primary colour” is written down in code; it is typed into the theme. A token file is the thing Figma exports to and the theme imports from, so the two cannot drift silently.</dd>
+          <dt>Ask</dt><dd>A <code>tokens.json</code> (W3C Design Tokens format) holding primitives → semantic roles → component tokens, with the values from 3.1; generate the MUI palette and typography from it. Add the semantic roles code has never had: text, divider, background, status.</dd>
+          <dt>Done when</dt><dd>Changing one value in <code>tokens.json</code> changes it everywhere in Storybook.</dd>
+        </dl>
+      </div>
+      <div class="ticket">
+        <h4>Ticket 4 — Stop new hardcoded colours</h4>
+        <dl>
+          <dt>Why</dt><dd>In 85 files a developer typed a colour by hand instead of using the palette. Each is a place a Figma change will never reach. There are about 300 today; without a guard the number grows while we fix it.</dd>
+          <dt>Ask</dt><dd>A lint rule forbidding hex and <code>rgba(</code> outside the token and theme files, with an allowlist of the current 300 that shrinks as they are migrated.</dd>
+          <dt>Done when</dt><dd>The build fails on a new hardcoded colour.</dd>
+        </dl>
+      </div>
+      <div class="ticket">
+        <h4>Ticket 5 — Remove the legacy styling library</h4>
+        <dl>
+          <dt>Why</dt><dd>Indirectly. 45 files use a styling approach MUI removed in its next major version. It blocks the upgrade, and the upgrade is what brings better theming. Worth doing while those files are open for Ticket 4.</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="storybook">
+      <div class="section-head"><span class="n">6</span><h2>Storybook as <em>your</em> tool</h2></div>
+      <p>Today Storybook is engineering’s test harness that happens to be viewable. It can be your living spec. What that takes:</p>
+      <ul>
+        <li><b>Foundations pages you author.</b> Colour roles with usage rules, type scale with do/don’t, spacing, elevation, and the status vocabulary from 3.2. Storybook supports prose pages (MDX). There are none today. This is designer-owned content.</li>
+        <li><b>A token page that cannot lie.</b> Today’s “Design System / Tokens” page renders the 12 raw paint ramps and hardcodes its own swatch colours. It should render from <code>tokens.json</code> (Ticket 3), organised by role, so it is always true.</li>
+        <li><b>Stories as designed states.</b> Each story is one state you designed: default, hover, error, loading, empty. Today the 474 stories prove components mount. None test an interaction. Every dialog and dropdown should have at least one story that clicks through the flow; this is where “does the design work” gets checked automatically.</li>
+        <li><b>Accessibility as a gate, not a panel.</b> The accessibility checker is installed and set to “show but never fail”. Once the current violations are listed, flip it to fail the build. Contrast problems then get caught the day they are introduced.</li>
+        <li><b>Chromatic as design review.</b> Already live on the <code>design-system</code> branch. Every push produces a visual diff of all 474 stories against the baseline. You approve or reject changes in a browser. This is the mechanism that makes the colour migration safe: when the six mains change, you see every affected component at once.</li>
+      </ul>
+    </section>
+
+    <section id="sequence">
+      <div class="section-head"><span class="n">7</span><h2>Sequence</h2></div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>When</th><th>Who</th><th>What</th><th>Done when</th></tr></thead>
+          <tbody>
+            <tr><td><b>Week 1</b></td><td>You</td><td>Decisions 3.1–3.5; conversation with Dean on brand direction (3.4)</td><td>Six colours written down; status table agreed; dark mode in/out; Storybook groups chosen</td></tr>
+            <tr><td><b>Week 1–2</b></td><td>You, in Figma</td><td>Section 4, steps 1–7; publish library</td><td>Every colour in the library resolves to <code>fuga/colors</code>; <code>material/colors</code> deleted</td></tr>
+            <tr><td><b>Week 2</b></td><td>You + Claude</td><td>Foundations pages and the taxonomy (3.5) in Storybook on the <code>design-system</code> branch; rewrite the Tokens page</td><td>Storybook has 8 groups, Foundations first, prose pages for colour/type/spacing/status</td></tr>
+            <tr><td><b>Week 2</b></td><td>Engineering</td><td>Ticket 1 (headings)</td><td>Storybook = app for every heading</td></tr>
+            <tr><td><b>Week 3</b></td><td>Engineering</td><td>Ticket 2 (status chip), Ticket 3 (token file)</td><td>One chip; theme generated from tokens; Chromatic shows the colour change across all 474 stories; you approve it</td></tr>
+            <tr><td><b>Week 4</b></td><td>Engineering</td><td>Ticket 4 (lint guard), start Ticket 5</td><td>New hardcoded colours fail the build</td></tr>
+            <tr><td><b>Ongoing</b></td><td>You</td><td>Review Chromatic diffs on every design-system push</td><td>Visual changes are approved by design, not discovered by users</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The critical path is Week 1. Every later step needs the six colours and the status table.</p>
+    </section>
+
+    <section id="delete">
+      <div class="section-head"><span class="n">8</span><h2>Things to delete</h2></div>
+      <p>Small, satisfying, do them early.</p>
+      <ul>
+        <li><b>Figma:</b> the <code>material/colors</code> collection (after re-aliasing); Dark mode (if 3.3 says out); the Yellow status colour if it is never added.</li>
+        <li><b>Code:</b> five colour ramps nothing uses (<code>YELLOW</code>, <code>FUGA_GREEN</code>, <code>TURQUOISE</code>, <code>NAXOS_BLUE</code>, <code>PURPLE</code> — Purple survives if Relinquished keeps it); <code>yellowChip</code>; the three “Comparison” stories that exist to compare eleven near-identical dropdown buttons.</li>
+        <li><b>Both:</b> any component that exists on one side only and nobody can name a screen for.</li>
+      </ul>
+    </section>
+
+    <section id="glossary">
+      <div class="section-head"><span class="n">—</span><h2>Glossary</h2></div>
+      <dl class="gloss">
+        <div><dt>Token</dt><dd>A named design decision (<code>primary/main</code>) rather than a raw value (<code>#404041</code>). Change the token, everything using it changes.</dd></div>
+        <div><dt>Primitive</dt><dd>A raw colour in a ramp (<code>Grey/800</code>). Never used directly by a component.</dd></div>
+        <div><dt>Semantic role</dt><dd>A token that names <em>purpose</em> (<code>error/main</code>, <code>text/secondary</code>) and points at a primitive. Components use these.</dd></div>
+        <div><dt>Alias</dt><dd>A token that points at another token instead of holding a value. <code>primary/main → Grey/800</code>.</dd></div>
+        <div><dt>Variable (Figma)</dt><dd>Figma’s implementation of a token. Lives in a collection, can have modes (Light/Dark).</dd></div>
+        <div><dt>Style (Figma)</dt><dd>The older mechanism; text and effect styles are still styles here, colours are variables.</dd></div>
+        <div><dt>Story (Storybook)</dt><dd>One rendered state of one component. Storybook is the catalogue of all of them.</dd></div>
+        <div><dt>Chromatic</dt><dd>A service that screenshots every story on every push and shows you what changed.</dd></div>
+        <div><dt>Semantic layer</dt><dd>The middle tier of tokens (roles). Figma has one; code does not.</dd></div>
+      </dl>
+    </section>
+
+    <footer>
+      <p><b>Provenance.</b> Figma read via the Plugin API: every local variable collection, values resolved through aliases; the Status component’s 25 variants read for fills, strokes and bound variables. Code scanned at <code>nr-ui-tools</code> <code>staging @ edd73c2</code>; Storybook counts from a live build (130 docs pages, 474 stories).</p>
+      <p><b>Known limits.</b> Component-variant coverage was sampled (Status only); the other NR MUI v6.1 component sets were not diffed against code props. <code>DMP/colors</code> consumers were not traced.</p>
+    </footer>
+  </main>
+</div>

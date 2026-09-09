@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "nr-storybook",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--dir",
+        "/Users/casper/code/nr-ui-tools",
+        "storybook",
+        "--ci",
+        "--no-open"
+      ],
+      "port": 6006
+    }
+  ]
+}
