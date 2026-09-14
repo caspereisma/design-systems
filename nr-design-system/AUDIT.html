@@ -62,6 +62,7 @@
     margin: 0 auto;
     padding: 40px 24px 96px;
   }
+  .page > main, .page > .rail { min-width: 0; }
   @media (min-width: 1100px) {
     .page { grid-template-columns: 220px minmax(0, 1fr); padding: 56px 40px 120px; }
     .rail { position: sticky; top: 32px; align-self: start; }
@@ -195,6 +196,53 @@
   dl.gloss dt { font-weight: 700; }
   dl.gloss dd { margin: 2px 0 0; color: var(--ink-2); }
 
+  .howto { max-width: var(--wide); background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 24px 28px 8px; margin: 0 0 64px; }
+  .howto h2 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+  .howto .steps li { border-color: var(--line-2); }
+  .howto .tablewrap { background: var(--bg); }
+  .howto th { background: var(--bg-3); }
+  .howto .kw { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.04em; }
+  .status { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; border: 1px solid var(--line-2); color: var(--ink-2); vertical-align: 2px; margin-left: 8px; }
+  .status.done { border-color: var(--ok); color: var(--ok); }
+  .status.decided { border-color: var(--primary); color: var(--primary); }
+
+  /* ── Checklist ── */
+  .ck { max-width: var(--wide); margin: 16px 0 24px; }
+  .ck-head { display: grid; gap: 6px; margin-bottom: 8px; }
+  .ck-progress { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; }
+  .ck-track { height: 6px; background: var(--bg-3); border-radius: 2px; overflow: hidden; }
+  .ck-fill { height: 100%; width: 0; background: var(--primary); transition: width .2s ease; }
+  @media (prefers-reduced-motion: reduce) { .ck-fill { transition: none; } }
+  .ck-note { font-size: 13px; color: var(--ink-2); }
+  .ck-group { margin-top: 24px; }
+  .ck-group h4 { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 4px; font-size: 16px; }
+  .ck-group h4 .cnt { font-family: var(--mono); font-size: 12px; color: var(--ink-3); font-weight: 400; }
+  .ck-row { display: grid; grid-template-columns: 24px minmax(180px, 1.1fr) 1.3fr 1fr; gap: 4px 12px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 14px; align-items: start; cursor: pointer; }
+  .ck-group .ck-row:last-child { border-bottom: 1px solid var(--line); }
+  .ck-row input { margin: 3px 0 0; width: 16px; height: 16px; accent-color: var(--primary); cursor: pointer; }
+  .ck-row .var { font-family: var(--mono); font-size: 13px; line-height: 1.45; word-break: break-word; }
+  .ck-row .col { line-height: 1.45; min-width: 0; overflow-wrap: anywhere; }
+  .ck-row .col b { font-weight: 600; }
+  .ck-row .col .from { color: var(--ink-3); }
+  .ck-row .col .hex { font-family: var(--mono); font-size: 12px; color: var(--ink-2); }
+  .ck-row .col .dot { display: inline-block; width: 11px; height: 11px; border-radius: 3px; vertical-align: -1px; margin: 0 4px 0 2px; border: 1px solid rgba(0,0,0,.15); }
+  .ck-row .lbl { display: block; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+  .ck-row .note { grid-column: 2 / -1; font-size: 13px; color: var(--ink-2); }
+  .ck-row.done .var, .ck-row.done .col { text-decoration: line-through; text-decoration-color: var(--ink-3); opacity: .55; }
+  .ck-row.two { grid-template-columns: 24px minmax(180px, .8fr) 2fr; }
+  .ckbox { margin: 3px 0 0; width: 16px; height: 16px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; }
+  .steps li[data-ck] { grid-template-columns: 32px 24px 1fr; }
+  .steps li[data-ck] > .ckbox { grid-column: 2; }
+  .steps li.done > span { text-decoration: line-through; text-decoration-color: var(--ink-3); opacity: .6; }
+  .steps li.done > span .status { text-decoration: none; }
+  .ticket h4 { display: flex; align-items: baseline; gap: 10px; }
+  .ticket h4 .ckbox { position: relative; top: 2px; }
+  .ticket.done h4 { text-decoration: line-through; text-decoration-color: var(--ink-3); opacity: .6; }
+  ul > li[data-ck] { list-style: none; position: relative; margin-left: -22px; padding-left: 28px; }
+  ul > li[data-ck] > .ckbox { position: absolute; left: 0; top: 4px; margin: 0; }
+  ul > li[data-ck].done { text-decoration: line-through; text-decoration-color: var(--ink-3); opacity: .6; }
+  [data-ck-list] > .ck-note { margin: 8px 0; }
+  @media (max-width: 720px) { .ck-row { grid-template-columns: 24px 1fr; } .ck-row .col, .ck-row .note { grid-column: 2; } }
   .callout { max-width: var(--measure); border-left: 3px solid var(--attn); padding: 4px 0 4px 16px; margin: 20px 0 24px; }
   .callout p:last-child { margin-bottom: 0; }
   footer { max-width: var(--wide); border-top: 1px solid var(--line); padding-top: 20px; font-size: 13px; color: var(--ink-2); }
@@ -205,15 +253,18 @@
   <nav class="rail" aria-label="Contents">
     <div class="eyebrow">Contents</div>
     <ol>
+      <li><a href="#howto"><span class="n">—</span><span>How this page is used</span></a></li>
       <li><a href="#verdict"><span class="n">—</span><span>Verdict &amp; score</span></a></li>
       <li><a href="#see"><span class="n">1</span><span>What your users see</span></a></li>
       <li><a href="#why"><span class="n">2</span><span>Why it happened</span></a></li>
       <li><a href="#decide"><span class="n">3</span><span>Decisions only you can make</span></a></li>
       <li><a href="#figma"><span class="n">4</span><span>Fix it yourself in Figma</span></a></li>
+      <li><a href="#remap"><span class="n">4.1</span><span>Remap checklist</span></a></li>
       <li><a href="#tickets"><span class="n">5</span><span>What to ask engineering for</span></a></li>
       <li><a href="#storybook"><span class="n">6</span><span>Storybook as your tool</span></a></li>
       <li><a href="#sequence"><span class="n">7</span><span>Sequence</span></a></li>
       <li><a href="#delete"><span class="n">8</span><span>Things to delete</span></a></li>
+      <li><a href="#log"><span class="n">—</span><span>Decision log</span></a></li>
       <li><a href="#glossary"><span class="n">—</span><span>Glossary</span></a></li>
     </ol>
   </nav>
@@ -230,6 +281,38 @@
         <span>Engineering detail <b>AUDIT-technical.md</b></span>
       </div>
     </header>
+
+    <section id="howto" class="howto">
+      <h2>How this page is used</h2>
+      <p>This audit is a working document, not a report that gets read once. Casper reviews it, does the Figma and decision work it describes, and leaves comments on the page as he goes. Claude folds those comments back into the page in batches. The loop:</p>
+      <ol class="steps">
+        <li><span><b>Review and work.</b> Read a section, do the work in Figma, Storybook or with the team.</span></li>
+        <li><span><b>Comment where the change belongs.</b> Anchor each comment on the exact text, swatch or table row it refers to; the anchor is what tells Claude the target. No need to mention Claude in the comment. Start every comment with one of the four prefixes below.</span></li>
+        <li><span><b>End the sprint in chat.</b> When a review sprint is done, say “review comments” in the Claude Code session. Claude reads every thread, makes the changes, republishes the page once at the same link, and reports in chat what changed and what it did not do and why.</span></li>
+        <li><span><b>Close the threads.</b> Casper sends the threads he wants closed to Claude (reply with <em>Send to Claude</em> or mention <span class="kw">@claude</span>). Claude replies in each with what was done and resolves it. Threads not sent stay open for Casper to resolve by hand.</span></li>
+      </ol>
+
+      <h4>Comment prefixes</h4>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Prefix</th><th>Means</th><th>What Claude does with it</th></tr></thead>
+          <tbody>
+            <tr><td class="kw">DECISION</td><td>A choice has been made. <em>“DECISION primary is #404041.”</em></td><td>Updates the relevant section, marks the item <span class="status decided">decided</span>, adds a dated entry to the Decision log.</td></tr>
+            <tr><td class="kw">DONE</td><td>A step or ticket is complete. <em>“DONE step 4.3, backgrounds bound.”</em></td><td>Marks the step or ticket <span class="status done">done</span>, adds a dated entry to the Decision log.</td></tr>
+            <tr><td class="kw">CHANGE</td><td>Edit the page. <em>“CHANGE add sync states to the 3.2 table.”</em></td><td>Makes the edit. Substantive changes get a Decision log entry; wording fixes do not.</td></tr>
+            <tr><td class="kw">QUESTION</td><td>Something needs an answer, not an edit.</td><td>Answers in the chat report, and in the thread once it is sent to Claude. The page is not changed.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Two rules Claude follows</h4>
+      <ul>
+        <li><b>Comments are requests; chat is authority.</b> Reversible edits to this page and its files happen from comments alone. Anything outward-facing or hard to undo — pushing to <code>nr-ui-tools</code>, opening a PR, deleting a Figma collection, touching <code>staging</code> — is confirmed in chat first, whatever a comment says.</li>
+        <li><b>Checklists are live.</b> Decisions (3), Figma steps (4), the variable remap (4.1), tickets (5), Storybook practices (6) and deletions (8) all have shared ticks saved with the page. Tick as you complete; comment on a row for anything that needs a word. <span class="mono" id="ck-all"></span></li>
+        <li><b>The page is the log.</b> Every DECISION and DONE lands in the Decision log at the bottom with a date, so the page records what was agreed and when, alongside the original findings.</li>
+      </ul>
+      <p style="font-size:14px;color:var(--ink-2)">Caveat: after a republish that changes the text a comment is anchored to, open threads can drift or detach. Resolve threads at the end of each sprint so this stays rare.</p>
+    </section>
 
     <section id="verdict">
       <h2>The one-paragraph verdict</h2>
@@ -358,15 +441,24 @@
     <section id="decide">
       <div class="section-head"><span class="n">3</span><h2>Decisions only you can make</h2></div>
       <p>Nothing downstream can start until these are settled. Each is a design call, not an engineering one.</p>
+      <div class="ck" data-ck-list="decisions">
+        <div class="ck-head"><div class="ck-progress"><div class="ck-track"><div class="ck-fill" data-ck-fill></div></div><span class="mono" data-ck-count>0 / 6</span></div><span class="ck-note">Tick a decision when it is made. Comment DECISION on the row with the outcome.</span></div>
+        <label class="ck-row two" data-ck="decisions:d31"><span class="var">3.1 Six semantic colours</span><span class="col">FUGA values adopted in Figma on 11 Sep: primary grey/800, error red/500, warning orange/600, info blue/600, success green/600. Secondary aliased to grey.</span></label>
+        <label class="ck-row two" data-ck="decisions:d31t"><span class="var">3.1 Text: solid, not alpha</span><span class="col">text/primary grey/900, secondary grey/700, disabled grey/500. Adopted in Figma on 11 Sep.</span></label>
+        <label class="ck-row two" data-ck="decisions:d32"><span class="var">3.2 Status vocabulary</span><span class="col">Open questions: same green for Registered and Exclusive licence deal; Submitted vs Exported; Re-register same orange as To be registered; Purple in; Yellow out; Curve sync states in or indicator-only.</span></label>
+        <label class="ck-row two" data-ck="decisions:d33"><span class="var">3.3 Dark mode</span><span class="col">Kept for the future, 11 Sep. Figma stays two-mode; tokens.json carries a dark set; shipping it is a later Brief.</span></label>
+        <label class="ck-row two" data-ck="decisions:d34"><span class="var">3.4 Brand direction</span><span class="col">Executive decision, monitored by Casper, Dean and Román, 11 Sep. Build on FUGA now; swap later if asked. <code>DMP/colors</code> stays until then.</span></label>
+        <label class="ck-row two" data-ck="decisions:d35"><span class="var">3.5 Storybook organisation</span><span class="col">Decided and implemented 10 Sep: eight groups, Foundations first, Theme cheatsheet.</span></label>
+      </div>
 
-      <h3>3.1 The six semantic colours</h3>
+      <h3>3.1 The six semantic colours <span class="status decided">decided</span> <span class="status done">applied in Figma</span></h3>
       <p>Pick one value for each role. The recommendation is the FUGA column: it is what the hover and border states already use, what the chip backgrounds already use, and what your prototypes already use. Material is the accident.</p>
       <div class="tablewrap">
         <table>
           <thead><tr><th>Role</th><th>Figma today</th><th>Live app today</th><th>Prototype today</th><th>Recommend</th></tr></thead>
           <tbody>
             <tr><td><b>Primary</b></td><td class="mono"><span class="dot" style="background:#424242"></span>#424242</td><td class="mono"><span class="dot" style="background:#000000"></span>#000000</td><td class="mono"><span class="dot" style="background:#404041"></span>#404041</td><td class="rec mono"><span class="dot" style="background:#404041"></span>#404041 <span style="font-weight:400;color:var(--ink-2)">FUGA Grey 800</span></td></tr>
-            <tr><td><b>Secondary</b></td><td class="mono"><span class="dot" style="background:#9C27B0"></span>#9C27B0</td><td>white on grey</td><td>—</td><td class="rec"><span class="q">Decide whether NR has a secondary.</span> Nothing uses it consistently today.</td></tr>
+            <tr><td><b>Secondary</b></td><td class="mono"><span class="dot" style="background:#9C27B0"></span>#9C27B0</td><td>white on grey</td><td>—</td><td class="rec"><b>Copies primary.</b> NR uses no secondary colour, so <code>secondary/*</code> aliases the same grey tokens as <code>primary/*</code>.</td></tr>
             <tr><td><b>Error</b></td><td class="mono"><span class="dot" style="background:#F44336"></span>#F44336</td><td class="mono"><span class="dot" style="background:#F44139"></span>#F44139</td><td class="mono"><span class="dot" style="background:#F44139"></span>#F44139</td><td class="rec mono"><span class="dot" style="background:#F44139"></span>#F44139 <span style="font-weight:400;color:var(--ink-2)">FUGA Red 500</span></td></tr>
             <tr><td><b>Warning</b></td><td class="mono"><span class="dot" style="background:#FB8C00"></span>#FB8C00</td><td class="mono"><span class="dot" style="background:#ED6C02"></span>#ED6C02</td><td class="mono"><span class="dot" style="background:#FF8800"></span>#FF8800</td><td class="rec mono"><span class="dot" style="background:#FF8800"></span>#FF8800 <span style="font-weight:400;color:var(--ink-2)">FUGA Orange 600</span></td></tr>
             <tr><td><b>Info</b></td><td class="mono"><span class="dot" style="background:#039BE5"></span>#039BE5</td><td class="mono"><span class="dot" style="background:#45A2DD"></span>#45A2DD</td><td class="mono"><span class="dot" style="background:#45A2DD"></span>#45A2DD</td><td class="rec mono"><span class="dot" style="background:#45A2DD"></span>#45A2DD <span style="font-weight:400;color:var(--ink-2)">FUGA Blue 600</span></td></tr>
@@ -374,7 +466,21 @@
           </tbody>
         </table>
       </div>
-      <p>Also decide: is <strong>text</strong> <code>#000000</code> at 87 % (Figma, Material convention) or solid <code>#1F1F21</code> (app, prototype)? They look the same on white and differ on any tint. Recommend solid FUGA Grey 900: the app already uses it, and opacity-based text is harder to reason about on coloured surfaces.</p>
+      <p><strong>Text is solid, not alpha.</strong> Decided 11 Sep: <code>text/primary</code> <code>grey/900</code>, <code>text/secondary</code> <code>grey/700</code>, <code>text/disabled</code> <code>grey/500</code>, replacing Material’s 87 / 60 / 38 % black. Same look on white, but a fixed colour means contrast is computed once, rendering stays crisp, and Figma equals browser. The rule behind it, agreed alongside:</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Role</th><th>Solid or alpha</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td>Text, fills, chip backgrounds, brand, alerts</td><td><b>Solid</b></td><td>One hex, one rendering. Contrast fixed once. Exports everywhere.</td></tr>
+            <tr><td>Component borders (chip, input)</td><td><b>Solid</b> tint</td><td>The surface beneath is fixed, so alpha buys nothing. <code>red/200</code> ≈ <code>red/500</code> at 50 % on white anyway.</td></tr>
+            <tr><td>Hover, selected, focus, pressed, disabled</td><td><b>Alpha</b></td><td>Sit on many surfaces; one token must read right on all of them. Now <code>{role}/main</code> + <code>state-opacity/*</code> (Figma alias-with-opacity, since 3 Sep 2026).</td></tr>
+            <tr><td>Backdrop, scrim, skeleton</td><td><b>Alpha</b></td><td>Overlays by nature.</td></tr>
+            <tr><td>Dividers</td><td><b>Solid</b> <code>grey/300</code></td><td>Alpha only where they cross tinted rows.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Three guards: alpha never for text; never stack two alpha layers; every alpha state checked on the darkest surface it can sit on.</p>
+      <div class="done"><b>Decided and applied in Figma · 11 Sep 2026</b>Recommendations followed as written: primary <code>grey/800</code>, error <code>red/500</code>, warning <code>orange/600</code>, info <code>blue/600</code>, success <code>green/600</code>, text solid <code>grey/900</code> · <code>grey/700</code> · <code>grey/500</code>. Secondary copies primary, since NR uses no secondary colour. Every <code>palette</code> token now resolves through <code>fuga/colors</code>; <code>material/colors</code> is deleted. Code still carries the old values until Ticket 3.</div>
 
       <h3>3.2 The status vocabulary</h3>
       <p>This is the one component that is genuinely <em>NR’s</em>, and today it is a colour named after a colour (“redChip”, “Color: Red”). Define it once as meaning → colour role. The statuses that exist in the product:</p>
@@ -396,10 +502,15 @@
       <p>Figma has five colours (Red, Green, Orange, Blue, Grey). The product needs six: add Purple. Code also defines a Yellow chip that nothing uses. Delete it.</p>
       <p>Missing from <em>both</em> Figma and code, present only in your prototype: Curve sync state (synced / requires sync / not synced), advance recoupment (recouped / in recoupment), sliding-scale position, deal-ending flag. Decide whether these join the status vocabulary or stay indicator-only.</p>
 
-      <h3>3.3 Dark mode: in or out?</h3>
-      <p>If out, delete the Dark mode from the Figma <code>palette</code> collection so it stops implying a promise. If in, it is a product decision with real engineering cost and should go through a Brief.</p>
+      <h3>3.3 Dark mode: kept for the future <span class="status decided">decided</span></h3>
+      <p><b>Decided 11 Sep:</b> dark mode stays. It is a future capability, not a current build item, so the Figma <code>palette</code> keeps its Dark mode and every token stays two-mode. What that means in practice:</p>
+      <ul>
+        <li>The Dark column in 4.1 applies. <code>state-opacity</code> keeps its dark values (hover 8, selected 16), the Material dark paper-elevation greys stay (d04).</li>
+        <li>Ticket 3’s <code>tokens.json</code> carries a dark set from day one. It costs almost nothing, since Figma already has the values, and it stops dark mode becoming a second migration later.</li>
+        <li>Shipping dark mode in the product is still a Brief when its time comes. Nothing in code renders it today.</li>
+      </ul>
 
-      <h3>3.4 Brand direction — ask Dean before building tokens</h3>
+      <h3>3.4 Brand direction — a dependency to monitor <span class="status decided">decided</span></h3>
       <p>The Figma file contains a third palette, <code>DMP/colors</code>: Downtown Music Publishing’s brand. It is bound to nothing.</p>
       <div class="exhibit">
         <div class="swatches six">
@@ -413,10 +524,10 @@
         <div class="cap">The 500 step of each DMP ramp. Sixty variables in the library, zero components using them.</div>
       </div>
       <div class="callout">
-        <p>With the UMG/VMG integration underway, this is worth one conversation: is NR staying on FUGA’s visual identity, moving to DMP’s, or waiting for VMG’s? The answer does not change the plan — a semantic layer makes a palette swap cheap — but it changes which palette you point it at first, and whether you delete <code>DMP/colors</code> or <code>fuga/colors</code>.</p>
+        <p><b>Decided 11 Sep:</b> the rebrand question sits with the executives, not with this team. Casper, Dean and Román monitor it. Tokens do not wait on it: the system is built against FUGA now, and the semantic layer makes a palette swap cheap if the executives choose DMP or VMG later. <code>DMP/colors</code> stays in the file until that call is made, then gets deleted or promoted.</p>
       </div>
 
-      <h3>3.5 How Storybook should be organised</h3>
+      <h3>3.5 How Storybook should be organised <span class="status decided">decided</span> <span class="status done">done</span></h3>
       <p>Storybook is your living component catalogue, but today it is arranged by the engineer’s folder structure: 19 groups including both “Chips” and “Chips &amp; Status”, both “Feedback” and “Notifications”, and five overlapping groups for inputs. This is an information-architecture task you own. A proposal to react to:</p>
       <ol class="groups">
         <li><span class="n">1</span><span><b>Foundations</b> <span>— colour roles, typography, spacing, elevation, the status vocabulary</span></span></li>
@@ -429,28 +540,110 @@
         <li><span class="n">8</span><span><b>Domain</b> <span>— asset metadata editing, client sections</span></span></li>
       </ol>
       <p>Eight groups, Foundations first, one home per component.</p>
+      <div class="done"><b>Decided and implemented · 10 Sep 2026</b>Adopted as proposed, plus a <b>Theme</b> page. On the <code>design-system</code> branch: 119 story files retitled into the eight groups (large old groups kept as a second level, e.g. <em>Feedback / Dialogs</em>), sidebar sorted in this order with Foundations first, Storybook glob widened beyond <code>src/common</code>, and a new <em>Foundations / Theme</em> cheatsheet that mirrors the Figma “Theme” page: palette roles, type scale, buttons in three sizes, tabs, selection controls, chips, the NR status chips, text fields, selects and date picker, table, progress, alerts. Every value on it is read from the theme; nothing is hardcoded. Not yet pushed.</div>
     </section>
 
     <section id="figma">
       <div class="section-head"><span class="n">4</span><h2>What you can fix yourself, in Figma, this week</h2></div>
       <p>All inside <code>NR MUI v6.1</code>. None of it needs engineering. Publishing the library afterwards updates every screen that uses it.</p>
-      <ol class="steps">
-        <li><span><b>Re-point the six <code>main</code> tokens</b> (<code>primary</code>, <code>secondary</code>, <code>error</code>, <code>warning</code>, <code>info</code>, <code>success</code>, plus their <code>dark</code> and <code>light</code> variants) from <code>material/colors</code> to the matching <code>fuga/colors</code> ramp, in both Light and Dark modes. Use the values from 3.1.</span></li>
-        <li><span><b>Regenerate the <code>_states</code> tokens</b> (hover 4 %, selected 8 %, focus 12 %, focusVisible 30 %, outlinedBorder 50 %) from the new mains so they stop being hand-typed literals. The Dark-mode ones currently use Material values; fix those too.</span></li>
-        <li><span><b>Bind the <code>Status</code> chip backgrounds.</b> On all 25 variants the background is a typed hex. Bind each to the matching <code>{role}/light</code> or a new <code>{role}/_states/background</code> token. Add a <b>Purple</b> colour variant for Relinquished.</span></li>
-        <li><span><b>Rename the FUGA ramps to match the Material convention</b> (<code>Grey/800</code> → <code>grey/800</code>, <code>Fuga-Blue</code> → <code>fugaBlue</code>, <code>naxos-blue</code> → <code>naxosBlue</code>, <code>Base/White</code> → <code>common/white</code>). Consistent casing is what stops the wrong alias being picked next time.</span></li>
-        <li><span><b>Delete <code>material/colors</code></b> once nothing aliases it. 252 variables that exist only to be picked by mistake.</span></li>
-        <li><span><b>Tidy the small things:</b> fix the typo <code>knowFillDisabled</code> → <code>knobFillDisabled</code>; set <code>breakpoints/xs</code> to 0 (MUI’s default; 444 is a frame width); rename <code>_fontSize/0,625rem</code> style names to use a dot.</span></li>
-        <li><span><b>Scope the variables.</b> Most are <code>ALL_SCOPES</code>, so every colour appears in every picker. The kit’s own <code>text/*</code> tokens show the pattern: text colours scoped to text fill, surface colours to frame fill, border colours to stroke. This is the single biggest quality-of-life improvement for anyone designing in the file.</span></li>
-      </ol>
+      <div data-ck-list="figma-steps"><p class="ck-note">Steps done: <span class="mono" data-ck-count>0 / 7</span></p>
+      <ol class="steps"><li data-ck="figma-steps:s1"><span><b>Re-point the six <code>main</code> tokens</b> (<code>primary</code>, <code>secondary</code>, <code>error</code>, <code>warning</code>, <code>info</code>, <code>success</code>, plus their <code>dark</code> and <code>light</code> variants) from <code>material/colors</code> to the matching <code>fuga/colors</code> ramp, in both Light and Dark modes. Use the values from 3.1.</span></li>
+        <li data-ck="figma-steps:s2"><span><b>Re-alias the <code>_states</code> tokens</b> to <code>{role}/main</code> with their own opacity (hover 4 %, selected 8 %, focus 12 %, focusVisible 30 %, outlinedBorder 50 %). Figma supports alias + opacity since the 3 September 2026 release “Control opacity at scale”, and the opacity can be a number variable, so put the five percentages in one small set scoped for colour variables. Both modes then follow the mains automatically; the Dark-mode Material literals disappear with them.</span></li>
+        <li data-ck="figma-steps:s3"><span><b>Bind the <code>Status</code> chip backgrounds.</b> On all 25 variants the background is a typed hex. Bind each to the matching <code>{role}/light</code> or a new <code>{role}/_states/background</code> token. Add a <b>Purple</b> colour variant for Relinquished. <span class="status">open</span> Purple variant exists but copies Grey; backgrounds still literal on all six.</span></li>
+        <li data-ck="figma-steps:s4"><span><b>Rename the FUGA ramps to match the Material convention</b> (<code>Grey/800</code> → <code>grey/800</code>, <code>Fuga-Blue</code> → <code>fugaBlue</code>, <code>naxos-blue</code> → <code>naxosBlue</code>, <code>Base/White</code> → <code>common/white</code>). Consistent casing is what stops the wrong alias being picked next time. <span class="status done">done</span> Lowercase ramps, <code>base/White</code>; <code>fuga-Blue</code> and <code>fuga-Green</code> kept a capital. <code>naxos-blue</code> removed.</span></li>
+        <li data-ck="figma-steps:s5"><span><b>Delete <code>material/colors</code></b> once nothing aliases it. 252 variables that exist only to be picked by mistake.</span></li>
+        <li data-ck="figma-steps:s6"><span><b>Tidy the small things:</b> fix the typo <code>knowFillDisabled</code> → <code>knobFillDisabled</code>; set <code>breakpoints/xs</code> to 0 (MUI’s default; 444 is a frame width); rename <code>_fontSize/0,625rem</code> style names to use a dot. <span class="status">partly</span> <code>knobFillDisabled</code> renamed. <code>breakpoints/xs</code> still 444; nine <code>_fontSize</code> names still use a comma.</span></li>
+        <li data-ck="figma-steps:s7"><span><b>Scope the variables.</b> Most are <code>ALL_SCOPES</code>, so every colour appears in every picker. The kit’s own <code>text/*</code> tokens show the pattern: text colours scoped to text fill, surface colours to frame fill, border colours to stroke. This is the single biggest quality-of-life improvement for anyone designing in the file. <span class="status">open</span> 61 palette tokens still <code>ALL_SCOPES</code>. <code>state-opacity/*</code> already <code>COLOR_OPACITY</code>.</span></li>
+      </ol></div>
+
+      <h3 id="remap">4.1 Variable remap checklist</h3>
+      <p>Every <code>palette</code> variable that touches <code>material/colors</code>, plus the Material-derived literals, with its <code>fuga/colors</code> target. Follows the 3.1 colours and the solid-versus-alpha split: text, fills and borders solid; interaction states and overlays alpha, now as aliases with opacity rather than typed literals. Names are the current FUGA ones; the rename in step 4 comes after. Dark column applies only if 3.3 keeps dark mode.</p>
+      <p>Tick rows as you go. Ticks are shared: everyone with the link sees the same state, and it survives republishing. Comment on a row to leave a note or question.</p>
+      <div class="done"><b>Reviewed against the file · 11 Sep 2026</b>All 55 ticked rows verified in Figma; the three earlier slips (success/dark in Dark, standard input enabled border, knobFillDisabled typo) are fixed. Beyond the list: ramps renamed lowercase (<code>grey/800</code>, <code>base/White</code>, <code>fuga-Blue</code>, <code>fuga-Green</code>), the unused <code>naxos-blue</code> ramp removed, <code>state-opacity/*</code> scoped <code>COLOR_OPACITY</code>, <code>action/*</code> re-aliased to <code>base/Black</code>. Rows below still show pre-rename names. Open: d04, f03, f04, and the Status chip (backgrounds unbound; Purple variant still a copy of Grey and needs a <code>purple</code> palette role).</div>
+      <div class="ck" id="ck" data-ck-list="remap">
+        <div class="ck-head">
+          <div class="ck-progress"><div class="ck-track"><div class="ck-fill" data-ck-fill></div></div><span class="mono" data-ck-count>0 / 58</span></div>
+          <span class="ck-note" id="ck-status">Loading saved ticks…</span>
+        </div>
+        <div class="ck-group" data-group="a"><h4>A · Semantic mains (3.1 values) <span class="cnt"><span class="g-done">0</span> / 18</span></h4>
+        <label class="ck-row" data-ck="remap:a01"><span class="var">primary/main</span><span class="col"><span class="lbl">Light</span><span class="from">grey/800 #424242</span> <b>Grey/800</b> <span class="dot" style="background:#404041"></span><span class="hex">#404041</span></span><span class="col"><span class="lbl">Dark</span><span class="from">grey/200</span> <b>Grey/300</b> <span class="dot" style="background:#DEDEE0"></span><span class="hex">#DEDEE0</span></span></label>
+        <label class="ck-row" data-ck="remap:a02"><span class="var">primary/dark</span><span class="col"><span class="lbl">Light</span><span class="from">grey/900</span> <b>Grey/900</b> <span class="dot" style="background:#1F1F21"></span><span class="hex">#1F1F21</span></span><span class="col"><span class="lbl">Dark</span><span class="from">grey/500</span> <b>Grey/500</b> <span class="dot" style="background:#9B9B9D"></span><span class="hex">#9B9B9D</span></span></label>
+        <label class="ck-row" data-ck="remap:a03"><span class="var">primary/light</span><span class="col"><span class="lbl">Light</span><span class="from">grey/600</span> <b>Grey/600</b> <span class="dot" style="background:#737374"></span><span class="hex">#737374</span></span><span class="col"><span class="lbl">Dark</span><span class="from">grey/50</span> <b>Grey/50</b> <span class="dot" style="background:#FAFAFC"></span><span class="hex">#FAFAFC</span></span></label>
+        <label class="ck-row" data-ck="remap:a04"><span class="var">primary/contrastText</span><span class="col"><span class="lbl">Light</span><span class="from">Base/White</span> <b>keep</b> <span class="dot" style="background:#FFFFFF"></span><span class="hex">#FFFFFF</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#000 @87%</span> <b>Grey/900</b> <span class="dot" style="background:#1F1F21"></span><span class="hex">#1F1F21</span></span><span class="note">Solid instead of alpha black.</span></label>
+        <label class="ck-row" data-ck="remap:a05"><span class="var">secondary/main · dark · light</span><span class="col"><span class="lbl">Light</span><span class="from">purple/500 · 700 · 300</span> <b>same Grey tokens as primary</b> <span class="dot" style="background:#404041"></span><span class="hex">#404041</span></span><span class="col"><span class="lbl">Dark</span><span class="from">purple/200 · 400 · 50</span> <b>same as primary dark</b> <span class="dot" style="background:#DEDEE0"></span><span class="hex">#DEDEE0</span></span><span class="note">NR has no accent in use; code&#x27;s &quot;secondary&quot; is a button style. Aliasing to grey makes any stray secondary render harmlessly. Revisit only if an accent is wanted (Purple/500 #66359D or Fuga-Blue/500 #3F598E).</span></label>
+        <label class="ck-row" data-ck="remap:a06"><span class="var">error/main</span><span class="col"><span class="lbl">Light</span><span class="from">red/500 #F44336</span> <b>Red/500</b> <span class="dot" style="background:#F44139"></span><span class="hex">#F44139</span></span><span class="col"><span class="lbl">Dark</span><span class="from">red/500</span> <b>Red/500</b> <span class="dot" style="background:#F44139"></span><span class="hex">#F44139</span></span></label>
+        <label class="ck-row" data-ck="remap:a07"><span class="var">error/dark</span><span class="col"><span class="lbl">Light</span><span class="from">red/700</span> <b>Red/700</b> <span class="dot" style="background:#D32D32"></span><span class="hex">#D32D32</span></span><span class="col"><span class="lbl">Dark</span><span class="from">red/700</span> <b>Red/700</b> <span class="dot" style="background:#D32D32"></span><span class="hex">#D32D32</span></span></label>
+        <label class="ck-row" data-ck="remap:a08"><span class="var">error/light</span><span class="col"><span class="lbl">Light</span><span class="from">red/300</span> <b>Red/300</b> <span class="dot" style="background:#E47375"></span><span class="hex">#E47375</span></span><span class="col"><span class="lbl">Dark</span><span class="from">red/300</span> <b>Red/300</b> <span class="dot" style="background:#E47375"></span><span class="hex">#E47375</span></span></label>
+        <label class="ck-row" data-ck="remap:a09"><span class="var">warning/main</span><span class="col"><span class="lbl">Light</span><span class="from">orange/600 #FB8C00</span> <b>Orange/600</b> <span class="dot" style="background:#FF8800"></span><span class="hex">#FF8800</span></span><span class="col"><span class="lbl">Dark</span><span class="from">orange/400</span> <b>Orange/400</b> <span class="dot" style="background:#FFA424"></span><span class="hex">#FFA424</span></span></label>
+        <label class="ck-row" data-ck="remap:a10"><span class="var">warning/dark</span><span class="col"><span class="lbl">Light</span><span class="from">orange/700</span> <b>Orange/700</b> <span class="dot" style="background:#F97802"></span><span class="hex">#F97802</span></span><span class="col"><span class="lbl">Dark</span><span class="from">orange/700</span> <b>Orange/700</b> <span class="dot" style="background:#F97802"></span><span class="hex">#F97802</span></span></label>
+        <label class="ck-row" data-ck="remap:a11"><span class="var">warning/light</span><span class="col"><span class="lbl">Light</span><span class="from">orange/300</span> <b>Orange/300</b> <span class="dot" style="background:#FFB44C"></span><span class="hex">#FFB44C</span></span><span class="col"><span class="lbl">Dark</span><span class="from">orange/300</span> <b>Orange/300</b> <span class="dot" style="background:#FFB44C"></span><span class="hex">#FFB44C</span></span></label>
+        <label class="ck-row" data-ck="remap:a12"><span class="var">info/main</span><span class="col"><span class="lbl">Light</span><span class="from">lightBlue/600 #039BE5</span> <b>Blue/600</b> <span class="dot" style="background:#45A2DD"></span><span class="hex">#45A2DD</span></span><span class="col"><span class="lbl">Dark</span><span class="from">lightBlue/400</span> <b>Blue/400</b> <span class="dot" style="background:#5ABCED"></span><span class="hex">#5ABCED</span></span></label>
+        <label class="ck-row" data-ck="remap:a13"><span class="var">info/dark</span><span class="col"><span class="lbl">Light</span><span class="from">lightBlue/700</span> <b>Blue/700</b> <span class="dot" style="background:#3D8FC9"></span><span class="hex">#3D8FC9</span></span><span class="col"><span class="lbl">Dark</span><span class="from">lightBlue/700</span> <b>Blue/700</b> <span class="dot" style="background:#3D8FC9"></span><span class="hex">#3D8FC9</span></span></label>
+        <label class="ck-row" data-ck="remap:a14"><span class="var">info/light</span><span class="col"><span class="lbl">Light</span><span class="from">lightBlue/400</span> <b>Blue/400</b> <span class="dot" style="background:#5ABCED"></span><span class="hex">#5ABCED</span></span><span class="col"><span class="lbl">Dark</span><span class="from">lightBlue/300</span> <b>Blue/300</b> <span class="dot" style="background:#74C7ED"></span><span class="hex">#74C7ED</span></span></label>
+        <label class="ck-row" data-ck="remap:a15"><span class="var">success/main</span><span class="col"><span class="lbl">Light</span><span class="from">green/600 #43A047</span> <b>Green/600</b> <span class="dot" style="background:#00A542"></span><span class="hex">#00A542</span></span><span class="col"><span class="lbl">Dark</span><span class="from">green/400</span> <b>Green/400</b> <span class="dot" style="background:#0FC066"></span><span class="hex">#0FC066</span></span></label>
+        <label class="ck-row" data-ck="remap:a16"><span class="var">success/dark</span><span class="col"><span class="lbl">Light</span><span class="from">green/700</span> <b>Green/700</b> <span class="dot" style="background:#009237"></span><span class="hex">#009237</span></span><span class="col"><span class="lbl">Dark</span><span class="from">green/700</span> <b>Green/700</b> <span class="dot" style="background:#009237"></span><span class="hex">#009237</span></span></label>
+        <label class="ck-row" data-ck="remap:a17"><span class="var">success/light</span><span class="col"><span class="lbl">Light</span><span class="from">green/400</span> <b>Green/400</b> <span class="dot" style="background:#0FC066"></span><span class="hex">#0FC066</span></span><span class="col"><span class="lbl">Dark</span><span class="from">green/300</span> <b>Green/300</b> <span class="dot" style="background:#56CC82"></span><span class="hex">#56CC82</span></span></label>
+        <label class="ck-row" data-ck="remap:a18"><span class="var">error · warning · info · success /contrastText</span><span class="col"><span class="lbl">Light</span><span class="from">#FFF</span> <b>Base/White</b> <span class="dot" style="background:#FFFFFF"></span><span class="hex">#FFFFFF</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#000 @87%</span> <b>Grey/900</b> <span class="dot" style="background:#1F1F21"></span><span class="hex">#1F1F21</span></span></label>
+        </div>
+        <div class="ck-group" data-group="b"><h4>B · Text (alpha → solid) <span class="cnt"><span class="g-done">0</span> / 3</span></h4>
+        <label class="ck-row" data-ck="remap:b01"><span class="var">text/primary</span><span class="col"><span class="lbl">Light</span><span class="from">#000 @87%</span> <b>Grey/900</b> <span class="dot" style="background:#1F1F21"></span><span class="hex">#1F1F21</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#FFF</span> <b>Grey/50</b> <span class="dot" style="background:#FAFAFC"></span><span class="hex">#FAFAFC</span></span></label>
+        <label class="ck-row" data-ck="remap:b02"><span class="var">text/secondary</span><span class="col"><span class="lbl">Light</span><span class="from">#000 @60%</span> <b>Grey/700</b> <span class="dot" style="background:#5F5F60"></span><span class="hex">#5F5F60</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#FFF @70%</span> <b>Grey/400</b> <span class="dot" style="background:#BBBBBD"></span><span class="hex">#BBBBBD</span></span></label>
+        <label class="ck-row" data-ck="remap:b03"><span class="var">text/disabled</span><span class="col"><span class="lbl">Light</span><span class="from">#000 @38%</span> <b>Grey/500</b> <span class="dot" style="background:#9B9B9D"></span><span class="hex">#9B9B9D</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#FFF @38%</span> <b>Grey/600</b> <span class="dot" style="background:#737374"></span><span class="hex">#737374</span></span></label>
+        </div>
+        <div class="ck-group" data-group="c"><h4>C · Interaction states (alias to main + opacity) <span class="cnt"><span class="g-done">0</span> / 6</span></h4>
+        <label class="ck-row" data-ck="remap:c00"><span class="var">state-opacity (new number-variable set)</span><span class="col"><span class="lbl">Light</span><span class="from">—</span> <b>create</b></span><span class="col"><span class="lbl">Dark</span><span class="from">—</span> <b>create</b></span><span class="note">hover 4 · selected 8 · focus 12 · focusVisible 30 · outlinedBorder 50. Scope them for use in colour variables. Every _states token points its opacity here, so the percentages live in one place. This is MUI&#x27;s action.hoverOpacity model.</span></label><label class="ck-row" data-ck="remap:c01"><span class="var">error/_states/* (hover · selected · focus · focusVisible · outlinedBorder)</span><span class="col"><span class="lbl">Light</span><span class="from">#F44139 literals</span> <b>alias error/main + opacity</b> <span class="dot" style="background:#F44139"></span><span class="hex">#F44139</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#F44336 literals</span> <b>alias error/main + opacity</b> <span class="dot" style="background:#F44139"></span><span class="hex">#F44139</span></span><span class="note">Figma supports alias + opacity since 3 Sep 2026 (&quot;Control opacity at scale&quot;). Alias each state to error/main and set opacity 4 · 8 · 12 · 30 · 50 %. Both modes then follow the main automatically.</span></label>
+        <label class="ck-row" data-ck="remap:c02"><span class="var">warning/_states/*</span><span class="col"><span class="lbl">Light</span><span class="from">#FF8800 literals</span> <b>alias warning/main + opacity</b> <span class="dot" style="background:#FF8800"></span><span class="hex">#FF8800</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#FFA726 literals</span> <b>alias warning/main + opacity</b> <span class="dot" style="background:#FFA424"></span><span class="hex">#FFA424</span></span><span class="note">Same five percentages.</span></label>
+        <label class="ck-row" data-ck="remap:c03"><span class="var">secondary/_states/*</span><span class="col"><span class="lbl">Light</span><span class="from">#9C27B0 literals</span> <b>alias secondary/main + opacity</b> <span class="dot" style="background:#404041"></span><span class="hex">#404041</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#CE93D8 literals</span> <b>alias secondary/main + opacity</b> <span class="dot" style="background:#DEDEE0"></span><span class="hex">#DEDEE0</span></span><span class="note">Follows whatever a05 decides for secondary.</span></label>
+        <label class="ck-row" data-ck="remap:c04"><span class="var">primary · info · success /_states/*</span><span class="col"><span class="lbl">Light</span><span class="from">FUGA literals</span> <b>alias {role}/main + opacity</b></span><span class="col"><span class="lbl">Dark</span><span class="from">FUGA literals</span> <b>alias {role}/main + opacity</b></span><span class="note">Values are already right; converting to aliases is what stops them drifting next time a main changes.</span></label>
+        <label class="ck-row" data-ck="remap:c05"><span class="var">text/_states · action/* · common/*_states</span><span class="col"><span class="lbl">Light</span><span class="from">keep</span> <b>keep</b></span><span class="col"><span class="lbl">Dark</span><span class="from">keep</span> <b>keep</b></span><span class="note">Alpha of #000 / #FFF, not Material-specific.</span></label>
+        </div>
+        <div class="ck-group" data-group="d"><h4>D · Surfaces and dividers (alpha → solid) <span class="cnt"><span class="g-done">0</span> / 4</span></h4>
+        <label class="ck-row" data-ck="remap:d01"><span class="var">divider</span><span class="col"><span class="lbl">Light</span><span class="from">#000 @12%</span> <b>Grey/300</b> <span class="dot" style="background:#DEDEE0"></span><span class="hex">#DEDEE0</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#FFF @12%</span> <b>Grey/800</b> <span class="dot" style="background:#404041"></span><span class="hex">#404041</span></span></label>
+        <label class="ck-row" data-ck="remap:d02"><span class="var">elevation/outlined</span><span class="col"><span class="lbl">Light</span><span class="from">#E0E0E0 (Material grey/300)</span> <b>Grey/300</b> <span class="dot" style="background:#DEDEE0"></span><span class="hex">#DEDEE0</span></span><span class="col"><span class="lbl">Dark</span><span class="from">→ divider</span> <b>keep alias</b></span></label>
+        <label class="ck-row" data-ck="remap:d03"><span class="var">background/default · paper-elevation-0</span><span class="col"><span class="lbl">Light</span><span class="from">#FFF</span> <b>Base/White</b> <span class="dot" style="background:#FFFFFF"></span><span class="hex">#FFFFFF</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#121212</span> <b>Grey/900</b> <span class="dot" style="background:#1F1F21"></span><span class="hex">#1F1F21</span></span></label>
+        <label class="ck-row" data-ck="remap:d04"><span class="var">background/paper-elevation-1…24</span><span class="col"><span class="lbl">Light</span><span class="from">white</span> <b>keep</b></span><span class="col"><span class="lbl">Dark</span><span class="from">Material dark greys</span> <b>keep</b></span><span class="note">Dark mode stays (3.3, decided 11 Sep). These are MUI’s dark elevation surfaces; FUGA has no equivalents and none are needed. Nothing to change.</span></label>
+        </div>
+        <div class="ck-group" data-group="e"><h4>E · Component tokens <span class="cnt"><span class="g-done">0</span> / 23</span></h4>
+        <label class="ck-row" data-ck="remap:e01"><span class="var">_components/appBar/defaultFill</span><span class="col"><span class="lbl">Light</span><span class="from">grey/100 #F5F5F5</span> <b>Base/Black</b> <span class="dot" style="background:#000000"></span><span class="hex">#000000</span></span><span class="col"><span class="lbl">Dark</span><span class="from">paper-elevation-4</span> <b>Grey/900</b> <span class="dot" style="background:#1F1F21"></span><span class="hex">#1F1F21</span></span><span class="note">The product&#x27;s app bar is black. Figma is wrong here independently of Material.</span></label>
+        <label class="ck-row" data-ck="remap:e02"><span class="var">_components/input/outlined/enabledBorder</span><span class="col"><span class="lbl">Light</span><span class="from">#000 @23%</span> <b>Grey/400</b> <span class="dot" style="background:#BBBBBD"></span><span class="hex">#BBBBBD</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#FFF @23%</span> <b>Grey/600</b> <span class="dot" style="background:#737374"></span><span class="hex">#737374</span></span></label>
+        <label class="ck-row" data-ck="remap:e03"><span class="var">_components/input/outlined/hoverBorder</span><span class="col"><span class="lbl">Light</span><span class="from">#000</span> <b>Grey/900</b> <span class="dot" style="background:#1F1F21"></span><span class="hex">#1F1F21</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#FFF</span> <b>Grey/50</b> <span class="dot" style="background:#FAFAFC"></span><span class="hex">#FAFAFC</span></span></label>
+        <label class="ck-row" data-ck="remap:e04"><span class="var">_components/input/standard/enabledBorder</span><span class="col"><span class="lbl">Light</span><span class="from">#000 @42%</span> <b>Grey/500</b> <span class="dot" style="background:#9B9B9D"></span><span class="hex">#9B9B9D</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#FFF @42%</span> <b>Grey/500</b> <span class="dot" style="background:#9B9B9D"></span><span class="hex">#9B9B9D</span></span></label>
+        <label class="ck-row" data-ck="remap:e05"><span class="var">_components/input/standard/hoverBorder</span><span class="col"><span class="lbl">Light</span><span class="from">#000</span> <b>Grey/900</b> <span class="dot" style="background:#1F1F21"></span><span class="hex">#1F1F21</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#FFF</span> <b>Grey/50</b> <span class="dot" style="background:#FAFAFC"></span><span class="hex">#FAFAFC</span></span></label>
+        <label class="ck-row" data-ck="remap:e06"><span class="var">_components/input/filled/enabledFill</span><span class="col"><span class="lbl">Light</span><span class="from">#000 @6%</span> <b>Grey/100</b> <span class="dot" style="background:#F4F4F6"></span><span class="hex">#F4F4F6</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#FFF @9%</span> <b>Grey/800</b> <span class="dot" style="background:#404041"></span><span class="hex">#404041</span></span></label>
+        <label class="ck-row" data-ck="remap:e07"><span class="var">_components/input/filled/hoverFill</span><span class="col"><span class="lbl">Light</span><span class="from">#000 @9%</span> <b>Grey/200</b> <span class="dot" style="background:#ECECEE"></span><span class="hex">#ECECEE</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#FFF @12%</span> <b>Grey/700</b> <span class="dot" style="background:#5F5F60"></span><span class="hex">#5F5F60</span></span></label>
+        <label class="ck-row" data-ck="remap:e08"><span class="var">_components/chip/defaultEnabledBorder</span><span class="col"><span class="lbl">Light</span><span class="from">grey/400</span> <b>Grey/400</b> <span class="dot" style="background:#BBBBBD"></span><span class="hex">#BBBBBD</span></span><span class="col"><span class="lbl">Dark</span><span class="from">grey/700</span> <b>Grey/700</b> <span class="dot" style="background:#5F5F60"></span><span class="hex">#5F5F60</span></span></label>
+        <label class="ck-row" data-ck="remap:e09"><span class="var">_components/chip/defaultCloseFill</span><span class="col"><span class="lbl">Light</span><span class="from">#000</span> <b>Grey/900</b> <span class="dot" style="background:#1F1F21"></span><span class="hex">#1F1F21</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#FFF</span> <b>Grey/50</b> <span class="dot" style="background:#FAFAFC"></span><span class="hex">#FAFAFC</span></span></label>
+        <label class="ck-row" data-ck="remap:e10"><span class="var">_components/chip/defaultHoverFill · defaultFocusFill</span><span class="col"><span class="lbl">Light</span><span class="from">keep alpha</span> <b>keep</b></span><span class="col"><span class="lbl">Dark</span><span class="from">keep alpha</span> <b>keep</b></span><span class="note">Interaction states.</span></label>
+        <label class="ck-row" data-ck="remap:e11"><span class="var">_components/avatar/fill</span><span class="col"><span class="lbl">Light</span><span class="from">grey/400</span> <b>Grey/400</b> <span class="dot" style="background:#BBBBBD"></span><span class="hex">#BBBBBD</span></span><span class="col"><span class="lbl">Dark</span><span class="from">grey/600</span> <b>Grey/600</b> <span class="dot" style="background:#737374"></span><span class="hex">#737374</span></span></label>
+        <label class="ck-row" data-ck="remap:e12"><span class="var">_components/switch/knobFillEnabled</span><span class="col"><span class="lbl">Light</span><span class="from">grey/50</span> <b>Grey/50</b> <span class="dot" style="background:#FAFAFC"></span><span class="hex">#FAFAFC</span></span><span class="col"><span class="lbl">Dark</span><span class="from">grey/300</span> <b>Grey/300</b> <span class="dot" style="background:#DEDEE0"></span><span class="hex">#DEDEE0</span></span></label>
+        <label class="ck-row" data-ck="remap:e13"><span class="var">_components/switch/knowFillDisabled</span><span class="col"><span class="lbl">Light</span><span class="from">grey/100</span> <b>Grey/100</b> <span class="dot" style="background:#F4F4F6"></span><span class="hex">#F4F4F6</span></span><span class="col"><span class="lbl">Dark</span><span class="from">grey/600</span> <b>Grey/600</b> <span class="dot" style="background:#737374"></span><span class="hex">#737374</span></span><span class="note">Rename to knobFillDisabled while here.</span></label>
+        <label class="ck-row" data-ck="remap:e14"><span class="var">_components/switch/slideFill</span><span class="col"><span class="lbl">Light</span><span class="from">#000</span> <b>Grey/900</b> <span class="dot" style="background:#1F1F21"></span><span class="hex">#1F1F21</span></span><span class="col"><span class="lbl">Dark</span><span class="from">#FFF @38%</span> <b>keep</b></span></label>
+        <label class="ck-row" data-ck="remap:e15"><span class="var">_components/breadcrumbs/collapseFill</span><span class="col"><span class="lbl">Light</span><span class="from">grey/100</span> <b>Grey/100</b> <span class="dot" style="background:#F4F4F6"></span><span class="hex">#F4F4F6</span></span><span class="col"><span class="lbl">Dark</span><span class="from">grey/600</span> <b>Grey/600</b> <span class="dot" style="background:#737374"></span><span class="hex">#737374</span></span></label>
+        <label class="ck-row" data-ck="remap:e16"><span class="var">_components/stepper/connector</span><span class="col"><span class="lbl">Light</span><span class="from">grey/400</span> <b>Grey/400</b> <span class="dot" style="background:#BBBBBD"></span><span class="hex">#BBBBBD</span></span><span class="col"><span class="lbl">Dark</span><span class="from">grey/600</span> <b>Grey/600</b> <span class="dot" style="background:#737374"></span><span class="hex">#737374</span></span></label>
+        <label class="ck-row" data-ck="remap:e17"><span class="var">_components/tooltip/fill</span><span class="col"><span class="lbl">Light</span><span class="from">#616161 @90%</span> <b>Grey/700 solid</b> <span class="dot" style="background:#5F5F60"></span><span class="hex">#5F5F60</span></span><span class="col"><span class="lbl">Dark</span><span class="from">same</span> <b>Grey/700 solid</b> <span class="dot" style="background:#5F5F60"></span><span class="hex">#5F5F60</span></span><span class="note">Text sits on it; solid keeps contrast fixed.</span></label>
+        <label class="ck-row" data-ck="remap:e18"><span class="var">_components/snackbar/fill</span><span class="col"><span class="lbl">Light</span><span class="from">#323232</span> <b>Grey/900</b> <span class="dot" style="background:#1F1F21"></span><span class="hex">#1F1F21</span></span><span class="col"><span class="lbl">Dark</span><span class="from">→ paper-elevation-6</span> <b>keep alias</b></span></label>
+        <label class="ck-row" data-ck="remap:e19"><span class="var">_components/backdrop/fill</span><span class="col"><span class="lbl">Light</span><span class="from">#000 @50%</span> <b>keep</b></span><span class="col"><span class="lbl">Dark</span><span class="from">#000 @50%</span> <b>keep</b></span><span class="note">Overlay by nature.</span></label>
+        <label class="ck-row" data-ck="remap:e20"><span class="var">_components/alert/*/background</span><span class="col"><span class="lbl">Light</span><span class="from">error #FDEDED · warning #FFF4E5 · info #E5F6FD · success #EDF7ED</span> <b>Red/50 · Orange/50 · Blue/50 · Green/50</b> <span class="dot" style="background:#FFEBEE"></span><span class="hex">#FFEBEE</span></span><span class="col"><span class="lbl">Dark</span><span class="from">dark values</span> <b>keep, or drop with dark mode</b></span><span class="note">Targets: #FFEBEE · #FFF3E0 · #E5F6FC · #E3F6E9. Matches what code renders today.</span></label>
+        <label class="ck-row" data-ck="remap:e21"><span class="var">_components/alert/*/color</span><span class="col"><span class="lbl">Light</span><span class="from">#5F2120 · #663C00 · #014361 · #1E4620</span> <b>keep</b></span><span class="col"><span class="lbl">Dark</span><span class="from">keep</span> <b>keep</b></span><span class="note">Code uses the same values; they pass contrast on the 50 tints.</span></label>
+        <label class="ck-row" data-ck="remap:e22"><span class="var">_components/rating/activeFill · enabledBorder</span><span class="col"><span class="lbl">Light</span><span class="from">#FFB400 · #000 @23%</span> <b>delete</b></span><span class="col"><span class="lbl">Dark</span><span class="from">—</span> <b>delete</b></span><span class="note">Rating is not used in NR. If kept: Yellow/700 #FCC326 and Grey/400.</span></label>
+        <label class="ck-row" data-ck="remap:e23"><span class="var">_native/scrollbar-bg</span><span class="col"><span class="lbl">Light</span><span class="from">grey/200</span> <b>Grey/200</b> <span class="dot" style="background:#ECECEE"></span><span class="hex">#ECECEE</span></span><span class="col"><span class="lbl">Dark</span><span class="from">grey/700</span> <b>Grey/700</b> <span class="dot" style="background:#5F5F60"></span><span class="hex">#5F5F60</span></span></label>
+        </div>
+        <div class="ck-group" data-group="f"><h4>F · Finish <span class="cnt"><span class="g-done">0</span> / 4</span></h4>
+        <label class="ck-row" data-ck="remap:f01"><span class="var">Check nothing still binds to material/*</span><span class="col"></span><span class="col"></span><span class="note">Variable panel usage counts. Anything left is a component bound directly to a primitive; rebind it to a palette token first.</span></label>
+        <label class="ck-row" data-ck="remap:f02"><span class="var">Delete the material/colors collection</span><span class="col"></span><span class="col"></span><span class="note">252 variables gone. DMP/colors stays until the brand conversation with Dean (3.4).</span></label>
+        <label class="ck-row" data-ck="remap:f03"><span class="var">Status chip text: decide 700 or 900</span><span class="col"></span><span class="col"></span><span class="note">Chip text binds to {role}/dark, now FUGA 700s (Red/700 #D32D32 …). Code uses the 900s (#B7191F …). 700 reads lighter, 900 has more contrast. Feeds Ticket 2.</span></label>
+        <label class="ck-row" data-ck="remap:f04"><span class="var">Publish the library</span><span class="col"></span><span class="col"></span><span class="note">Every screen using NR MUI v6.1 picks up the new values.</span></label>
+        </div>
+      </div>
       <div class="done"><b>Done when</b>Pick any component in the library, inspect any colour, and it resolves through <code>palette/*</code> to <code>fuga/colors/*</code>. No literal hex anywhere except inside <code>fuga/colors</code>.</div>
     </section>
 
     <section id="tickets">
       <div class="section-head"><span class="n">5</span><h2>What to ask engineering for</h2></div>
       <p>Each of these is one ticket, in the order they should happen. Phrased so Hlib or Vitaliy can pick it up without this document.</p>
+      <div data-ck-list="tickets"><p class="ck-note">Tickets done: <span class="mono" data-ck-count>0 / 5</span></p>
 
-      <div class="ticket">
+      <div class="ticket" data-ck="tickets:t1" data-ck-into="h4">
         <h4>Ticket 1 — Load the Light weight, fix two heading sizes</h4>
         <dl>
           <dt>Why</dt><dd>h1/h2 render differently in the app than in Figma and Storybook. h2 and h4 are 4 px and 2 px off.</dd>
@@ -458,7 +651,7 @@
           <dt>Done when</dt><dd>Storybook and the app render every heading identically.</dd>
         </dl>
       </div>
-      <div class="ticket">
+      <div class="ticket" data-ck="tickets:t2" data-ck-into="h4">
         <h4>Ticket 2 — One status chip</h4>
         <dl>
           <dt>Why</dt><dd>The same status is defined five separate times in code with different colours, plus a sixth “solid” variant in the theme. Every screen renders a slightly different chip.</dd>
@@ -466,15 +659,16 @@
           <dt>Done when</dt><dd>One component, one map, and its Storybook story shows every status in 3.2.</dd>
         </dl>
       </div>
-      <div class="ticket">
-        <h4>Ticket 3 — A token file the theme is generated from</h4>
+      <div class="ticket" data-ck="tickets:t3" data-ck-into="h4">
+        <h4>Ticket 3 — A token file the theme is generated from <span class="status">half done</span></h4>
         <dl>
           <dt>Why</dt><dd>Today there is no place where “primary colour” is written down in code; it is typed into the theme. A token file is the thing Figma exports to and the theme imports from, so the two cannot drift silently.</dd>
           <dt>Ask</dt><dd>A <code>tokens.json</code> (W3C Design Tokens format) holding primitives → semantic roles → component tokens, with the values from 3.1; generate the MUI palette and typography from it. Add the semantic roles code has never had: text, divider, background, status.</dd>
           <dt>Done when</dt><dd>Changing one value in <code>tokens.json</code> changes it everywhere in Storybook.</dd>
+                    <dt>Status</dt><dd>11 Sep: the token file exists. <code>figma-export.json</code> (read-only snapshot of all 340 Figma variables and 59 styles) → DTCG files (<code>primitives</code>, <code>foundation</code>, <code>palette.light</code>, <code>palette.dark</code>, <code>text-styles</code>, <code>elevation</code>) → Style Dictionary → <code>tokens.css</code> and <code>tokens.ts</code>, 398 tokens per mode, alias-with-opacity resolved to rgba. <code>pnpm tokens:build</code>. The theme is <em>not</em> yet generated from it; Storybook token tables read it.</dd>
         </dl>
       </div>
-      <div class="ticket">
+      <div class="ticket" data-ck="tickets:t4" data-ck-into="h4">
         <h4>Ticket 4 — Stop new hardcoded colours</h4>
         <dl>
           <dt>Why</dt><dd>In 85 files a developer typed a colour by hand instead of using the palette. Each is a place a Figma change will never reach. There are about 300 today; without a guard the number grows while we fix it.</dd>
@@ -482,24 +676,27 @@
           <dt>Done when</dt><dd>The build fails on a new hardcoded colour.</dd>
         </dl>
       </div>
-      <div class="ticket">
+      <div class="ticket" data-ck="tickets:t5" data-ck-into="h4">
         <h4>Ticket 5 — Remove the legacy styling library</h4>
         <dl>
           <dt>Why</dt><dd>Indirectly. 45 files use a styling approach MUI removed in its next major version. It blocks the upgrade, and the upgrade is what brings better theming. Worth doing while those files are open for Ticket 4.</dd>
         </dl>
+      </div>
       </div>
     </section>
 
     <section id="storybook">
       <div class="section-head"><span class="n">6</span><h2>Storybook as <em>your</em> tool</h2></div>
       <p>Today Storybook is engineering’s test harness that happens to be viewable. It can be your living spec. What that takes:</p>
+      <div data-ck-list="storybook"><p class="ck-note">Done: <span class="mono" data-ck-count>0 / 6</span></p>
       <ul>
-        <li><b>Foundations pages you author.</b> Colour roles with usage rules, type scale with do/don’t, spacing, elevation, and the status vocabulary from 3.2. Storybook supports prose pages (MDX). There are none today. This is designer-owned content.</li>
-        <li><b>A token page that cannot lie.</b> Today’s “Design System / Tokens” page renders the 12 raw paint ramps and hardcodes its own swatch colours. It should render from <code>tokens.json</code> (Ticket 3), organised by role, so it is always true.</li>
-        <li><b>Stories as designed states.</b> Each story is one state you designed: default, hover, error, loading, empty. Today the 474 stories prove components mount. None test an interaction. Every dialog and dropdown should have at least one story that clicks through the flow; this is where “does the design work” gets checked automatically.</li>
-        <li><b>Accessibility as a gate, not a panel.</b> The accessibility checker is installed and set to “show but never fail”. Once the current violations are listed, flip it to fail the build. Contrast problems then get caught the day they are introduced.</li>
-        <li><b>Chromatic as design review.</b> Already live on the <code>design-system</code> branch. Every push produces a visual diff of all 474 stories against the baseline. You approve or reject changes in a browser. This is the mechanism that makes the colour migration safe: when the six mains change, you see every affected component at once.</li>
-      </ul>
+        <li data-ck="storybook:sb1"><b>Foundations pages you author.</b> Colour roles with usage rules, type scale with do/don’t, spacing, elevation, and the status vocabulary from 3.2. Storybook supports prose pages (MDX). There are none today. This is designer-owned content.</li>
+        <li data-ck="storybook:sb2"><b>A token page that cannot lie.</b> Today’s “Design System / Tokens” page renders the 12 raw paint ramps and hardcodes its own swatch colours. It should render from <code>tokens.json</code> (Ticket 3), organised by role, so it is always true.</li>
+        <li data-ck="storybook:sb3"><b>Stories as designed states.</b> Each story is one state you designed: default, hover, error, loading, empty. Today the 474 stories prove components mount. None test an interaction. Every dialog and dropdown should have at least one story that clicks through the flow; this is where “does the design work” gets checked automatically.</li>
+        <li data-ck="storybook:sb4"><b>Accessibility as a gate, not a panel.</b> The accessibility checker is installed and set to “show but never fail”. Once the current violations are listed, flip it to fail the build. Contrast problems then get caught the day they are introduced.</li>
+        <li data-ck="storybook:sb6"><b>A “Figma MUI design library” section.</b> One page per Figma component set: the MUI component under the production theme in the variant × state × size matrix the Figma set defines (hover, focus, pressed forced), a <em>Design</em> tab embedding the live Figma set (<code>@storybook/addon-designs</code>), and a <em>Design Tokens</em> tab plus doc-page tables listing the variables the set binds (<code>storybook-design-token</code>, reading the generated <code>tokens.css</code>). Pilot of 3 pages (Button, Chip, Status) on <code>design-system</code>; 29 to go.</li>
+        <li data-ck="storybook:sb5"><b>Chromatic as design review.</b> Already live on the <code>design-system</code> branch. Every push produces a visual diff of all 474 stories against the baseline. You approve or reject changes in a browser. This is the mechanism that makes the colour migration safe: when the six mains change, you see every affected component at once.</li>
+      </ul></div>
     </section>
 
     <section id="sequence">
@@ -524,11 +721,42 @@
     <section id="delete">
       <div class="section-head"><span class="n">8</span><h2>Things to delete</h2></div>
       <p>Small, satisfying, do them early.</p>
+      <div data-ck-list="delete"><p class="ck-note">Deleted: <span class="mono" data-ck-count>0 / 6</span></p>
       <ul>
-        <li><b>Figma:</b> the <code>material/colors</code> collection (after re-aliasing); Dark mode (if 3.3 says out); the Yellow status colour if it is never added.</li>
-        <li><b>Code:</b> five colour ramps nothing uses (<code>YELLOW</code>, <code>FUGA_GREEN</code>, <code>TURQUOISE</code>, <code>NAXOS_BLUE</code>, <code>PURPLE</code> — Purple survives if Relinquished keeps it); <code>yellowChip</code>; the three “Comparison” stories that exist to compare eleven near-identical dropdown buttons.</li>
-        <li><b>Both:</b> any component that exists on one side only and nobody can name a screen for.</li>
-      </ul>
+        <li data-ck="delete:x1"><b>Figma:</b> the <code>material/colors</code> collection.</li>
+        <li data-ck="delete:x2"><b>Figma:</b> the <code>naxos-blue</code> ramp (dead in code too).</li>
+        <li data-ck="delete:x4"><b>Figma:</b> <code>DMP/colors</code>, once the executives settle the brand and it is not the answer.</li>
+        <li data-ck="delete:x5"><b>Code:</b> colour ramps nothing uses (<code>YELLOW</code>, <code>FUGA_GREEN</code>, <code>TURQUOISE</code>, <code>NAXOS_BLUE</code>; <code>PURPLE</code> survives for Relinquished).</li>
+        <li data-ck="delete:x6"><b>Code:</b> <code>yellowChip</code>, mapped to nothing.</li>
+        <li data-ck="delete:x7"><b>Code:</b> the three “Comparison” stories that exist to compare eleven near-identical dropdown buttons.</li>
+      </ul></div>
+    </section>
+
+    <section id="log">
+      <div class="section-head"><span class="n">—</span><h2>Decision log</h2></div>
+      <p>Dated record of decisions, completed steps and substantive changes, folded in from page comments after each review sprint. Newest first.</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Date</th><th>Type</th><th>Entry</th><th>Where</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">2026-09-14</td><td class="kw">CHANGE</td><td>Rolled back the Figma-PNG-versus-code comparison on the pilot pages at Casper’s request; the PNG exports and the code-versus-Figma match columns are gone. Installed <code>@storybook/addon-designs</code> (live Figma set in a Design tab) and <code>storybook-design-token</code> (Design Tokens panel and doc blocks reading the generated <code>tokens.css</code>, now annotated by category). Pilot pages rebuilt on those: matrix story, autodocs page with per-category token tables filtered to the variables the Figma set binds.</td><td>6</td></tr>
+            <tr><td class="mono">2026-09-11</td><td class="kw">CHANGE</td><td>New Storybook group “Figma MUI design library” on <code>design-system</code>, pilot pages Button, Chip, Status: Figma set export beside the MUI component in Figma’s variant × state × size matrix (hover, focus, pressed forced via <code>storybook-addon-pseudo-states</code>), plus a token table per page: Figma binding → generated token, light and dark → what the code reads → match. First findings: Button font sizes fixed at 14 px by the theme where Figma has 15 / 14 / 13; Chip label 13 px vs theme body2 14 px; Status chip text FUGA 700s vs code 900s and borders 50 % alpha vs solid 200-tints.</td><td>6</td></tr>
+            <tr><td class="mono">2026-09-11</td><td class="kw">DONE</td><td>Design tokens file created from the Figma variables (Ticket 3, first half): <code>figma-export.json</code> → DTCG → Style Dictionary → <code>tokens.css</code> + <code>tokens.ts</code>, 398 tokens per mode. Theme generation from it is the remaining half.</td><td>5 · Ticket 3</td></tr>
+            <tr><td class="mono">2026-09-11</td><td class="kw">QUESTION</td><td>Figma: in the <code>&lt;Button&gt;</code> set, Secondary Outlined and Text variants still render purple <code>#9C27B0 @50%</code> on strokes bound to <code>secondary/_states/outlinedBorder</code>, although that variable now composes from <code>secondary/main</code> (grey/800) and the label text on the same variants renders grey. Looks like a stale compose evaluation. Open the variable in Figma and re-save, or check whether the library needs republishing.</td><td>Figma</td></tr>
+            <tr><td class="mono">2026-09-11</td><td class="kw">DECISION</td><td>3.4 brand direction is an executive matter; Casper, Dean and Román monitor it. Tokens proceed on FUGA; <code>DMP/colors</code> stays until the call is made. (From page comment.)</td><td>3.4</td></tr>
+            <tr><td class="mono">2026-09-11</td><td class="kw">DECISION</td><td>3.3 dark mode kept for the future: Figma stays two-mode, tokens.json to carry a dark set, shipping it is a later Brief. Dark-mode deletion removed from section 8. (From page comment.)</td><td>3.3</td></tr>
+            <tr><td class="mono">2026-09-11</td><td class="kw">CHANGE</td><td>3.1 text paragraph rewritten as the decision (solid greys) and the solid-versus-alpha rule from the chat conversation added as a table. (From page comment.)</td><td>3.1</td></tr>
+            <tr><td class="mono">2026-09-11</td><td class="kw">DECISION</td><td>3.1 adopted as recommended and applied in Figma: FUGA mains, solid text greys, secondary copies primary because NR uses no secondary colour. (From page comment.)</td><td>3.1</td></tr>
+            <tr><td class="mono">2026-09-11</td><td class="kw">CHANGE</td><td>Checklists extended beyond 4.1: decisions (3), Figma steps (4), tickets (5), Storybook practices (6), deletions (8). Known-done items pre-ticked. Requested in chat.</td><td>How this page is used</td></tr>
+            <tr><td class="mono">2026-09-11</td><td class="kw">DONE</td><td>Figma remap reviewed against the file: 55 of 58 rows done and verified; the three slips found in the first review (success/dark Dark, standard input enabled border, knobFillDisabled) are fixed. Also done beyond the list: ramps renamed lowercase, <code>naxos-blue</code> ramp removed, <code>state-opacity</code> scoped <code>COLOR_OPACITY</code>, all six <code>action/*</code> tokens composed from <code>base/Black</code> with the <code>state-opacity</code> set grown to eight (hover 4/8, selected 8/16, focus 12, focusVisible 30, outlinedBorder 50, disabled 38, disabledBackground 12, active 56), <code>material/colors</code> deleted with no dangling aliases. Open: Status chip backgrounds and Purple role, <code>breakpoints/xs</code>, typography comma names, 61 <code>ALL_SCOPES</code> tokens, publish, f03.</td><td>4.1 · 4</td></tr>
+            <tr><td class="mono">2026-09-11</td><td class="kw">CHANGE</td><td>Group C of 4.1 and step 2 of section 4 corrected: Figma’s 3 Sep 2026 release “Control opacity at scale” allows a colour variable to alias another and carry its own opacity, bindable to a number variable. State tokens become aliases to <code>{role}/main</code> plus a shared opacity set instead of typed literals. Raised as a QUESTION comment; verified against the release note.</td><td>4.1 · C</td></tr>
+            <tr><td class="mono">2026-09-11</td><td class="kw">CHANGE</td><td>Added 4.1, the variable remap checklist: 57 rows mapping every <code>palette</code> token off <code>material/colors</code> onto <code>fuga/colors</code>, with shared ticks. Requested in chat.</td><td>4.1</td></tr>
+            <tr><td class="mono">2026-09-10</td><td class="kw">DONE</td><td>Storybook reorganised into the eight groups of 3.5 (119 files retitled, sort order set, glob widened) and a <em>Foundations / Theme</em> cheatsheet added mirroring the Figma Theme page. On <code>design-system</code>, committed locally, not pushed.</td><td>3.5</td></tr>
+            <tr><td class="mono">2026-09-10</td><td class="kw">DECISION</td><td>Reorganise Storybook as proposed in 3.5, and add a Theme page giving an overview of the main implemented atomic components, like the “Theme” page in Figma NR MUI v6.1. (From page comment.)</td><td>3.5</td></tr>
+            <tr><td class="mono">2026-09-10</td><td class="kw">PROCESS</td><td>Ways of working agreed: comment with prefixes, batch review on “review comments” in chat, Casper sends threads to Claude for in-thread replies and resolution, page carries the log.</td><td>How this page is used</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section id="glossary">
@@ -552,3 +780,57 @@
     </footer>
   </main>
 </div>
+<script>
+(function () {
+  var LS = 'nr-audit-checks-v2';
+  var items = Array.prototype.slice.call(document.querySelectorAll('[data-ck]'));
+  items.forEach(function (el) {
+    var into = el.getAttribute('data-ck-into'); var host = into ? el.querySelector(into) : el;
+    if (!host || host.querySelector(':scope > input.ckbox')) return;
+    var cb = document.createElement('input'); cb.type = 'checkbox'; cb.className = 'ckbox';
+    cb.setAttribute('aria-label', 'Done: ' + (el.textContent || '').trim().slice(0, 80));
+    host.insertBefore(cb, host.firstChild);
+  });
+  var lists = Array.prototype.slice.call(document.querySelectorAll('[data-ck-list]'));
+  var status = document.getElementById('ck-status'), all = document.getElementById('ck-all');
+  var db = null, state = {};
+  function key(el) { var p = el.getAttribute('data-ck').split(':'); return { c: p[0], id: p[1] }; }
+  function isDone(k) { return !!(state[k.c] && state[k.c][k.id] && state[k.c][k.id].done); }
+  function render() {
+    var tot = 0, dn = 0;
+    items.forEach(function (el) { var on = isDone(key(el)); var cb = el.querySelector('input.ckbox'); if (cb) cb.checked = on; el.classList.toggle('done', on); tot++; if (on) dn++; });
+    lists.forEach(function (l) {
+      var c = l.getAttribute('data-ck-list'); var els = items.filter(function (e) { return key(e).c === c; });
+      var d = els.filter(function (e) { return e.classList.contains('done'); }).length;
+      var out = l.querySelector('[data-ck-count]'); if (out) out.textContent = d + ' / ' + els.length;
+      var fill = l.querySelector('[data-ck-fill]'); if (fill) fill.style.width = (els.length ? 100 * d / els.length : 0) + '%';
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.ck-group'), function (g) { var gd = g.querySelector('.g-done'); if (gd) gd.textContent = g.querySelectorAll('[data-ck].done').length; });
+    if (all) all.textContent = dn + ' of ' + tot + ' actions done.';
+  }
+  function readLS() { try { return JSON.parse(localStorage.getItem(LS) || '{}'); } catch (e) { return {}; } }
+  function writeLS() { try { localStorage.setItem(LS, JSON.stringify(state)); } catch (e) {} }
+  state = readLS(); render();
+  items.forEach(function (el) {
+    var cb = el.querySelector('input.ckbox'); if (!cb) return;
+    cb.addEventListener('change', function (ev) {
+      var k = key(el), rec = { done: ev.target.checked, at: new Date().toISOString() };
+      state[k.c] = state[k.c] || {}; state[k.c][k.id] = rec; writeLS(); render();
+      if (db) db.collection(k.c).doc(k.id).set(rec).catch(function (e) { if (status) status.textContent = 'Could not save that tick (' + (e && e.code || 'error') + '). Kept on this device only.'; });
+    });
+  });
+  var collections = []; items.forEach(function (el) { var c = key(el).c; if (collections.indexOf(c) < 0) collections.push(c); });
+  var use = window.claude && typeof window.claude.use === 'function' ? window.claude.use('db') : Promise.resolve(null);
+  use.then(function (ns) {
+    db = ns;
+    if (!db) { if (status) status.textContent = 'Ticks are saved on this device only.'; return; }
+    collections.forEach(function (c) {
+      db.collection(c).onSnapshot(function (snap) {
+        var st = {}; snap.docs.forEach(function (d) { if (d.exists) st[d.id] = d.data(); });
+        state[c] = st; writeLS(); render();
+        if (status) status.textContent = snap.metadata.hasPendingWrites ? 'Saving…' : 'Ticks are shared and saved for everyone with the link.';
+      }, function (e) { if (status) status.textContent = 'Live sync lost (' + (e && e.code || 'error') + '). Ticks kept on this device only until reload.'; });
+    });
+  }).catch(function () { if (status) status.textContent = 'Ticks are saved on this device only.'; });
+})();
+</script>
