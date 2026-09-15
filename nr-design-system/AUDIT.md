@@ -123,10 +123,10 @@ This is the one component that is genuinely *NR's*, and today it is a colour nam
 | To be registered | Not yet sent | Orange | — |
 | Re-register | Needs resubmission | Orange | Same orange as "To be registered". Intentional? |
 | Unavailable / Not applicable | Cannot be claimed | Grey | — |
-| Relinquished | Rights given up | **Purple** | **Missing from Figma.** |
+| Relinquished | Rights given up | **Purple** | Purple role and variant added to Figma 14 Sep. |
 | Export in progress / completed / failed | Bulk-export job states | Blue / Green / Red | Only place Red is used. |
 
-Figma has five colours (Red, Green, Orange, Blue, Grey). The product needs six (add Purple). Code also defines a Yellow chip that nothing uses: delete it.
+Figma had five colours (Red, Green, Orange, Blue, Grey); Purple was added on 14 Sep as a full `purple/*` palette role, so the library now has the six the product needs. Code also defines a Yellow chip that nothing uses: delete it.
 
 Also missing from *both* Figma and code, present only in your prototype: Curve sync state (synced / requires sync / not synced), advance recoupment (recouped / in recoupment), sliding-scale position, deal-ending flag. Decide whether these join the status vocabulary or stay indicator-only.
 
@@ -163,7 +163,7 @@ All inside `NR MUI v6.1`. None of it needs engineering. Publishing the library a
 
 1. [x] **Re-point the six `main` tokens** (`primary/main`, `secondary/main`, `error/main`, `warning/main`, `info/main`, `success/main`, plus their `dark` and `light` variants) from `material/colors` to the matching `fuga/colors` ramp, in both Light and Dark modes. Use the values from §3.1.
 2. [x] **Re-alias the `_states` tokens** to `{role}/main` with their own opacity (hover 4 %, selected 8 %, focus 12 %, focusVisible 30 %, outlinedBorder 50 %). Figma supports alias + opacity since the 3 September 2026 release "Control opacity at scale", and the opacity can be a number variable, so put the five percentages in one small set scoped for colour variables. Both modes then follow the mains automatically.
-3. [ ] **Bind the `Status` chip backgrounds.** On all 25 variants the background is a typed hex. Bind each to the matching `{role}/light` or a new `{role}/_states/background` token. Add a **Purple** colour variant for Relinquished.
+3. [x] **Bind the `Status` chip backgrounds.** On all 25 variants the background is a typed hex. Bind each to the matching `{role}/light` or a new `{role}/_states/background` token. Add a **Purple** colour variant for Relinquished. *Done 14 Sep: `purple/*` role (500 / 700 / 300, contrastText, five `_states`); six `_components/status/{role}/background` tokens, solid 50-tints with `grey/200` for the neutral chip, bound on all 30 variants; Purple variants use `purple/dark` and `purple/_states/outlinedBorder`. Dark values provisional 900s.*
 4. [x] **Rename the FUGA ramps to match the Material convention** (`Grey/800` → `grey/800`, `Fuga-Blue` → `fugaBlue`, `naxos-blue` → `naxosBlue`, `Base/White` → `common/white`). Consistent casing is what stops the wrong alias being picked next time.
 5. [x] **Delete `material/colors`** once nothing aliases it. 252 variables that exist only to be picked by mistake.
 6. [ ] **Tidy the small things**: fix the typo `knowFillDisabled` → `knobFillDisabled`; set `breakpoints/xs` to 0 (MUI's default; 444 is a frame width); rename `_fontSize/0,625rem` style names to use a dot.
@@ -285,7 +285,7 @@ Each of these is one ticket. Written in the order they should happen. Phrased so
 *Ask:* one `<StatusChip status="…">` component driven by a single status → colour-role map matching §3.2; retire the four overlapping maps and the `statusSummary` theme entry; add Purple; delete the unused Yellow.
 *Done when:* one component, one map, and its Storybook story shows every status in §3.2.
 
-### [ ] Ticket 3 — A token file the theme is generated from *(half done, 11 Sep: token file exists via `pnpm tokens:build`; theme not yet generated from it)*
+### [ ] Ticket 3 — A token file the theme is generated from *(done on design-system, 14 Sep: `src/styling/tokens/muiTheme.ts` builds palette, typography, shape, spacing and breakpoints from the token file and `FugaMainStyles` uses it; primary #404041, warning #FF8800, solid text greys, h2 60 / h4 34. Secondary stays white pending the QUESTION of 14 Sep. Not pushed.)*
 *Why it matters to design:* today there is no place where "primary colour" is written down in code; it is typed into the theme. A token file is the thing Figma exports to and the theme imports from, so the two cannot drift silently.
 *Ask:* a `tokens.json` (W3C Design Tokens format) holding primitives → semantic roles → component tokens, with the values from §3.1; generate the MUI palette and typography from it. Add the semantic roles code has never had: text, divider, background, status.
 *Done when:* changing one value in `tokens.json` changes it everywhere in Storybook.
@@ -304,7 +304,9 @@ Each of these is one ticket. Written in the order they should happen. Phrased so
 
 Today Storybook is engineering's test harness that happens to be viewable. It can be your living spec. What that takes:
 
-- [ ] **A "Figma MUI design library" section.** One page per Figma component set: the MUI component in the matrix the Figma set defines, a Design tab embedding the live Figma set (`@storybook/addon-designs`), and Design Tokens panel + doc tables of the variables the set binds (`storybook-design-token`). Pilot of 3 (Button, Chip, Status) on `design-system`; 29 to go.
+- [x] **A "Figma MUI design library" section.** One page per Figma component set: the MUI component in the matrix the Figma set defines, a Design tab embedding the live Figma set (`@storybook/addon-designs`), and Design Tokens panel + doc tables of the variables the set binds (`storybook-design-token`). All 32 pages on `design-system` (pilot 11 Sep, the other 29 on 14 Sep). Each page ends with a note on where the code cannot show what Figma draws.
+
+**What the 32 library pages turned up (14 Sep).** A second layer of drift below the six colours, all theme overrides written for one screen that leak everywhere: every SvgIcon is pinned to 18 px #666666 (icon button, checkbox, radio, toggle, tab and app-bar icons ignore size and colour); tooltips are 16 px where Figma has 10; the outlined warning alert border is Material #FF9800, not FUGA #FF8800; text buttons are white, so Figma's dialog and card actions vanish on white; secondary is white in code and grey in the tokens (header notification dot, one ValidationSummary icon); every FormControl is at least 63 px tall; GlobalStyleOverrides gives every table borders and zebra rows; MUI has no static focus style for selection controls, tabs or list items, so Figma's focus halos have no code equivalent. On the Figma side, six sets still bound the deleted `material/colors` grey/300 and grey/400; fixed in Button Group and the shared scrollbar component, 31 Text Field frames remain.
 - [ ] **Foundations pages you author.** Colour roles with usage rules, type scale with do/don't, spacing, elevation, and the status vocabulary from §3.2. Storybook supports prose pages (MDX). There are none today. This is designer-owned content.
 - [ ] **A token page that cannot lie.** Today's "Design System / Tokens" page renders the 12 raw paint ramps and hardcodes its own swatch colours. It should render from `tokens.json` (Ticket 3), organised by role, so it is always true.
 - [ ] **Stories as designed states.** Each story is one state you designed: default, hover, error, loading, empty. Today the 474 stories prove components mount. None test an interaction. Every dialog and dropdown should have at least one story that clicks through the flow — this is where "does the design work" gets checked automatically.
@@ -348,6 +350,13 @@ Newest first.
 
 | Date | Type | Entry | Where |
 | --- | --- | --- | --- |
+| 2026-09-14 | CHANGE | Design Tokens panel narrowed per page: the token build emits one `Component · <name>` category per library page into `tokens.css` with only the variables that set binds (addon can hide categories, not tokens); each page's panel shows just that tab. | 6 |
+| 2026-09-14 | DONE | Figma MUI design library complete: 29 remaining pages added, 32 of 32. All sets read via the Plugin API (variant axes, bound variables with counts, styles); multi-set pages merge related sets. Matrix harness forces states on whole components and ignores the app's global table styles. Local commit `0be4fbfd` on `design-system`, not pushed. | 6 |
+| 2026-09-14 | DONE | Ticket 3 second half: MUI theme built from the token file (`muiTheme.ts` → `FugaMainStyles`). Storybook shows primary #404041, warning #FF8800, solid text greys, h2 60 / h4 34. Secondary excepted. | 5 · Ticket 3 |
+| 2026-09-14 | QUESTION | Secondary: decision 3.1 copies primary, but the app uses secondary as white in `HeaderIconsPanel` (notification dot on the black bar) and `ValidationSummary`. Theme keeps white until Casper says keep the exception or move the two usages. | 3.1 · Ticket 3 |
+| 2026-09-14 | DONE | Figma step 3: `purple/*` role (500 / 700 / 300, contrastText, five `_states`); six `_components/status/{role}/background` tokens (50-tints, neutral grey/200) bound on all 30 Status variants; Purple variants re-pointed. Dark values provisional 900s. | 4 · step 3 |
+| 2026-09-14 | CHANGE | Figma: deleted `material/colors` grey/300 and grey/400 still bound in six sets; re-pointed in Button Group and the shared `_Native Browser Scroll` component (fixes Table, Menu, Tabs, multiline Text Field). 31 `<TextField>` frames remain (write blocked by the tool's permission check). f01 stays open. | 4.1 · f01 |
+| 2026-09-14 | CHANGE | Section 6: findings from the 32 library pages added. | 6 |
 | 2026-09-14 | CHANGE | Rolled back the Figma-PNG-vs-code comparison on the pilot pages. Installed `@storybook/addon-designs` and `storybook-design-token`; pages rebuilt on them (matrix story, Design tab, per-category token tables from the annotated `tokens.css`). | 6 |
 | 2026-09-11 | CHANGE | New Storybook group "Figma MUI design library", pilot Button / Chip / Status: Figma export beside MUI matrix with forced hover/focus/pressed, token table per page (Figma binding → token light/dark → code path → match). First findings: Button sizes fixed 14 px vs Figma 15/14/13; Chip label 13 vs body2 14; Status text 700s vs 900s, borders alpha vs solid. | 6 |
 | 2026-09-11 | DONE | Design tokens file from Figma variables (Ticket 3 first half): figma-export.json → DTCG → Style Dictionary → tokens.css + tokens.ts, 398 tokens per mode. | 5 · Ticket 3 |
