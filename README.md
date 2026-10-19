@@ -1,22 +1,16 @@
-# Design systems
+# Design-systems work has moved
 
-Reusable design systems used across my Claude Code projects. Each subfolder is a self-contained system — vendor it into your project by copying the folder, or reference its files directly from this repo.
+This personal repository is retired. Its Git history remains available as a historical reference. The lo-fi wireframe kit has been deliberately discarded.
 
-Local clone: `~/code/design-systems`
-Remote: <https://github.com/caspereisma/design-systems>
+The NR work now has maintained, company-owned homes:
 
-## Systems
+- [NR UI Library](https://github.com/Songtrust/nr-ui-library): implementation, token pipeline, current Storybook format and technical documentation.
+- [Continue the work](https://github.com/Songtrust/nr-ui-library/blob/main/docs/HANDOFF.md): concise current state, settled decisions and next work.
+- [New laptop/account setup](https://github.com/Songtrust/nr-ui-library/blob/main/docs/SETUP.md): repository access, reproducible commands and recovery checks.
+- [Historical NR records](https://github.com/Songtrust/nr-ui-library/tree/main/docs/archive/2026-10-19-migration): earlier analysis, original briefs/assets, untracked proposals, Confluence snapshots/diagrams and retired prototype source changes, with a checksum manifest.
+- [NR-INIT-004 in nr-product](https://github.com/Songtrust/nr-product/blob/main/initiatives/NR-INIT-004-nr-ui-library.md): initiative scope, owners and adoption actions.
+- [Existing Confluence hub](https://songtrust.atlassian.net/wiki/spaces/NR/pages/5112889345): team-facing mirrors.
 
-| System | What it is | Stack |
-| --- | --- | --- |
-| [`lofi-wireframe-system/`](lofi-wireframe-system/) | Pencil-on-paper wireframe kit (15 sections + tweaks panel) for fast lo-fi sketching. Sourced from a Claude Design handoff. | Static HTML / CSS / JSX (React via Babel-in-browser) |
+The original frontend Storybook remains in [nr-ui-tools on design-system](https://github.com/Songtrust/nr-ui-tools/tree/design-system). Private company repositories and services require authorised access. No package release or application deployment is part of this cleanup.
 
-## Adding a new system
-
-One folder per system, at the repo root. Each folder must contain:
-
-- the system's source files
-- a `README.md` aimed at humans (what it is, files, how to use)
-- an `AGENTS.md` aimed at coding agents (canonical files, token namespace, vendoring recipe)
-
-Keep each system self-contained — no cross-imports between sibling folders. If a system needs another, copy what you need rather than coupling them.
+Migration authorised 19 October 2026. Old instructions in previous commits describe historical work; use the current library handoff to resume.
